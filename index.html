@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LeiningerQuiz — Teoria do Cuidado Transcultural</title>
+    <title>LeiningerQuiz — Quiz Transcultural: Madeleine Leininger</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter & Fredoka -->
@@ -67,23 +67,25 @@
         }
         .btn-green:hover:not(:disabled) { filter: brightness(1.08); }
 
+        /* Animações suaves */
         @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.92) translateY(10px); }
+            0% { opacity: 0; transform: scale(0.88) translateY(14px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
         .animate-pop {
-            animation: popIn 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: popIn 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         @keyframes pulseTimer {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.12); }
         }
         .timer-urgent {
             animation: pulseTimer 0.6s infinite;
             background-color: #ef4444 !important;
         }
 
+        /* Glassmorphism */
         .glass-card {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(14px);
@@ -91,6 +93,7 @@
             border: 1px solid rgba(255, 255, 255, 0.16);
         }
 
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 10px; }
@@ -99,8 +102,8 @@
 <body class="flex flex-col min-h-screen">
 
     <!-- Barra Superior Global -->
-    <header class="w-full px-4 py-3 flex items-center justify-between border-b border-white/10 bg-slate-950/50 backdrop-blur-md sticky top-0 z-40">
-        <div id="brand-home-btn" class="flex items-center gap-3 cursor-pointer">
+    <header class="w-full px-4 py-3 flex items-center justify-between border-b border-white/10 bg-slate-950/40 backdrop-blur-md sticky top-0 z-40">
+        <div id="brand-home-btn" class="flex items-center gap-3 cursor-pointer" title="Voltar ao início">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg text-slate-950 font-bold text-xl">
                 <i class="fa-solid fa-user-nurse"></i>
             </div>
@@ -108,18 +111,18 @@
                 <h1 class="font-display font-bold text-base sm:text-lg leading-tight tracking-wide text-white">
                     Leininger<span class="text-emerald-400">Quiz</span>
                 </h1>
-                <p id="header-bank-subtitle" class="text-[11px] text-slate-300 hidden sm:block">Teoria do Cuidado Transcultural • 300+ Questões</p>
+                <p class="text-[11px] text-slate-300 hidden sm:block">Teoria do Cuidado Transcultural • Banco de 320 Questões</p>
             </div>
         </div>
 
         <div class="flex items-center gap-2 sm:gap-3">
-            <!-- Indicador de Status da Rede Multiplayer -->
+            <!-- Indicador de Rede Multiplayer -->
             <div id="net-status-pill" class="flex items-center gap-1.5 bg-slate-900/80 border border-white/15 px-2.5 py-1.5 rounded-full text-[11px] font-semibold text-slate-300" title="Status da Rede Multiplayer">
                 <span id="net-status-dot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
                 <span id="net-status-label">Pronto</span>
             </div>
 
-            <!-- Badge de Status da Sala (visível quando ativo) -->
+            <!-- Badge de Status da Sala -->
             <div id="header-room-badge" class="hidden items-center gap-2 bg-indigo-600/40 border border-indigo-400/40 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 <span>PIN: <strong id="header-pin-text" class="tracking-widest text-emerald-300">------</strong></span>
@@ -131,7 +134,7 @@
             </button>
 
             <!-- Botão Baixar Arquivo HTML -->
-    
+           
         </div>
     </header>
 
@@ -159,11 +162,11 @@
         <!-- ========================================================= -->
         <!-- TELA 1: MENU INICIAL                                      -->
         <!-- ========================================================= -->
-        <section id="view-home" class="w-full max-w-4xl animate-pop">
+        <section id="view-home" class="w-full max-w-5xl animate-pop">
             <div class="text-center mb-8 sm:mb-10">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs sm:text-sm font-semibold mb-4">
                     <i class="fa-solid fa-stethoscope"></i>
-                    <span>Enfermagem & Antropologia • Quiz Interativo</span>
+                    <span>Enfermagem & Antropologia • 320 Questões Sem Repetição</span>
                 </div>
                 <h2 class="font-display text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 bg-gradient-to-r from-white via-emerald-200 to-teal-300 bg-clip-text text-transparent">
                     Madeleine Leininger
@@ -183,7 +186,7 @@
                         </div>
                         <h3 class="font-display text-xl font-bold mb-2">Criar Sala (Host)</h3>
                         <p class="text-slate-300 text-sm mb-6 leading-relaxed">
-                            Para o apresentador projetar na tela. Gera um <strong>PIN exclusivo</strong> para vários colegas entrarem pelo celular e competirem ao vivo.
+                            Para o apresentador projetar na tela. Gera um <strong>PIN exclusivo</strong> e um <strong>QR Code funcional</strong> para os colegas entrarem pelo celular.
                         </p>
                     </div>
                     <button id="btn-create-room" type="button" class="w-full py-3.5 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-bold text-white shadow-lg shadow-indigo-950/50 transition flex items-center justify-center gap-2 cursor-pointer">
@@ -200,7 +203,7 @@
                         </div>
                         <h3 class="font-display text-xl font-bold mb-2">Entrar no Jogo</h3>
                         <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                            Digite o <strong>PIN de 6 dígitos</strong> mostrado na tela do apresentador e escolha seu nome para responder.
+                            Digite o <strong>PIN de 6 dígitos</strong> (ou escaneie o QR Code) e informe seu nome para competir ao vivo.
                         </p>
                         <div class="space-y-3 mb-4">
                             <input type="text" id="input-join-pin" maxlength="6" inputmode="numeric" placeholder="PIN DA SALA (ex: 482910)"
@@ -223,7 +226,7 @@
                         </div>
                         <h3 class="font-display text-xl font-bold mb-2">Prática Individual</h3>
                         <p class="text-slate-300 text-sm mb-6 leading-relaxed">
-                            Responda <strong>25 perguntas inéditas</strong> sorteadas de um banco com mais de 300 questões sobre Madeleine Leininger.
+                            Responda <strong>25 perguntas inéditas</strong> no seu próprio ritmo, com gabarito explicado e sem repetir questões já usadas.
                         </p>
                     </div>
                     <button id="btn-solo-mode" type="button" class="w-full py-3.5 px-5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-lg shadow-amber-950/50 transition flex items-center justify-center gap-2 cursor-pointer">
@@ -233,21 +236,16 @@
                 </div>
             </div>
 
-            <!-- Resumo Rápido dos Pilares + Controle do Banco de Perguntas -->
+            <!-- Resumo Rápido dos Pilares + Banco de 320 Questões -->
             <div class="glass-card rounded-3xl p-5 sm:p-6 mb-6">
                 <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                     <h4 class="font-display text-base sm:text-lg font-bold text-emerald-300 flex items-center gap-2">
                         <i class="fa-solid fa-book-medical"></i>
-                        <span id="bank-status-title">Banco com 300+ Questões • Sem Repetição</span>
+                        <span>Modos de Cuidado Cultural • Banco de <span id="bank-total-count">320</span> Questões</span>
                     </h4>
-                    <div class="flex items-center gap-2">
-                        <button id="btn-reset-history" type="button" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium text-amber-200 cursor-pointer" title="Reiniciar histórico de perguntas já sorteadas">
-                            <i class="fa-solid fa-rotate mr-1"></i> Reiniciar Histórico
-                        </button>
-                        <button id="btn-toggle-preview" type="button" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium cursor-pointer">
-                            <i class="fa-solid fa-list-check mr-1"></i> Ver Amostra
-                        </button>
-                    </div>
+                    <button id="btn-toggle-preview" type="button" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition font-medium cursor-pointer">
+                        <i class="fa-solid fa-list-check mr-1"></i> Ver Amostra das Perguntas
+                    </button>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-300">
                     <div class="bg-slate-950/40 p-3.5 rounded-2xl border border-white/5">
@@ -264,37 +262,26 @@
                     </div>
                 </div>
 
+                <!-- Drawer colapsável com amostra das perguntas -->
                 <div id="questions-preview-drawer" class="hidden mt-5 pt-5 border-t border-white/10 max-h-72 overflow-y-auto space-y-2 pr-2"></div>
             </div>
 
             <!-- Seção de Autoria e Créditos Acadêmicos -->
-            <div id="credits-section" class="glass-card rounded-3xl p-5 sm:p-6 border border-emerald-400/25 bg-slate-950/40">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-300">
-                        <i class="fa-solid fa-award"></i>
-                        <span>Autoria e Créditos do Projeto</span>
-                    </span>
-                    <span class="text-xs text-slate-400">Enfermagem Transcultural</span>
-                </div>
-                <p class="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed mb-4">
-                    Projeto prova gamificada da disciplina de História da Enfermagem, segundo período Enfermagem manhã do Centro Universitário São Miguel.
-                </p>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                    <div class="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-user-graduate text-emerald-400 text-xs"></i>
-                        <span>Everlyn Marinho</span>
+            <div class="glass-card rounded-3xl p-5 sm:p-6 border border-emerald-400/25 bg-slate-950/45">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-emerald-400 mb-1">
+                            <i class="fa-solid fa-award"></i> Autoria e Créditos
+                        </span>
+                        <p class="text-slate-200 text-xs sm:text-sm leading-relaxed">
+                            Projeto prova gamificada da disciplina de <strong>História da Enfermagem</strong>, segundo período Enfermagem manhã do <strong>Centro Universitário São Miguel</strong>.
+                        </p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-user-graduate text-emerald-400 text-xs"></i>
-                        <span>Maria Luiza Luna</span>
-                    </div>
-                    <div class="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-user-graduate text-emerald-400 text-xs"></i>
-                        <span>Marjorie Vitória</span>
-                    </div>
-                    <div class="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs sm:text-sm font-semibold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-user-graduate text-emerald-400 text-xs"></i>
-                        <span>Thayna Mirele</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm font-semibold text-white">Everlyn Marinho</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm font-semibold text-white">Maria Luiza Luna</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm font-semibold text-white">Marjorie Vitória</span>
+                        <span class="px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm font-semibold text-white">Thayna Mirele</span>
                     </div>
                 </div>
             </div>
@@ -311,10 +298,16 @@
                             Sala Multiplayer Ativa
                         </span>
                         <h2 class="font-display text-2xl sm:text-3xl font-bold mb-1">Entre pelo seu celular!</h2>
-                        <p class="text-slate-300 text-sm">Abra este mesmo link no celular e digite o PIN abaixo:</p>
+                        <p class="text-slate-300 text-sm">
+                            Aponte a câmera para o QR Code ou acesse <strong class="text-emerald-300">https://malulluna.github.io/quizleininger/</strong> e digite o PIN:
+                        </p>
+                        <p id="qr-target-url-label" class="text-[11px] font-mono text-slate-400 mt-1 break-all">
+                            https://malulluna.github.io/quizleininger/
+                        </p>
                         <p id="host-p2p-hint" class="text-xs text-emerald-300/90 mt-1.5"></p>
                     </div>
 
+                    <!-- Caixa Destaque PIN + QR Code Funcional -->
                     <div class="flex flex-col sm:flex-row items-center gap-5 bg-slate-950/70 p-4 sm:p-5 rounded-3xl border border-emerald-400/40">
                         <div class="text-center sm:text-left">
                             <span class="text-xs uppercase tracking-widest text-slate-400 block font-semibold">PIN DO JOGO</span>
@@ -327,7 +320,12 @@
                                 </button>
                             </div>
                         </div>
-                        <div id="qrcode-box" class="bg-white p-2 rounded-xl shadow-md flex items-center justify-center w-[112px] h-[112px]"></div>
+                        <div class="flex flex-col items-center">
+                            <div class="bg-white p-2 rounded-2xl shadow-md flex items-center justify-center">
+                                <canvas id="qrcode-canvas" width="140" height="140" class="block rounded-lg"></canvas>
+                            </div>
+                            <span class="text-[10px] text-slate-400 mt-1.5 font-medium">QR Code direto com PIN</span>
+                        </div>
                     </div>
                 </div>
 
@@ -343,7 +341,7 @@
                     </div>
 
                     <div class="flex items-center gap-3">
-                        <span class="text-slate-300 font-medium"><i class="fa-solid fa-layer-group text-indigo-400 mr-1"></i> Quantidade:</span>
+                        <span class="text-slate-300 font-medium"><i class="fa-solid fa-layer-group text-indigo-400 mr-1"></i> Quantidade de questões:</span>
                         <select id="host-count-select" class="bg-slate-900 border border-white/20 rounded-xl px-3 py-1.5 text-white font-semibold focus:outline-none">
                             <option value="10">10 Perguntas</option>
                             <option value="15">15 Perguntas</option>
@@ -359,6 +357,7 @@
                             <i class="fa-solid fa-users text-emerald-400"></i>
                             <span>Jogadores Conectados (<span id="lobby-player-count">0</span>)</span>
                         </h3>
+                        <span class="text-xs text-slate-400">Sem repetições do banco de 320 questões</span>
                     </div>
 
                     <div id="lobby-players-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 min-h-[140px] max-h-64 overflow-y-auto p-2 bg-slate-950/30 rounded-2xl border border-white/5">
@@ -371,7 +370,7 @@
 
                 <!-- Botões de Ação do Host -->
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
-                    <button id="btn-host-cancel-room" type="button" class="w-full sm:w-auto px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-sm transition cursor-pointer">
+                    <button id="btn-cancel-room" type="button" class="w-full sm:w-auto px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-sm transition cursor-pointer">
                         Cancelar Sala
                     </button>
                     <button id="btn-host-start-game" type="button" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-display font-bold text-lg shadow-xl shadow-emerald-950/60 transition flex items-center justify-center gap-3 cursor-pointer">
@@ -408,6 +407,7 @@
         <!-- TELA 4: ARENA DO QUIZ (PERGUNTA ATIVA)                    -->
         <!-- ========================================================= -->
         <section id="view-quiz-active" class="hidden w-full max-w-5xl animate-pop">
+            <!-- Barra de Progresso e Temporizador -->
             <div class="flex items-center justify-between gap-4 mb-5">
                 <div class="glass-card px-4 py-2 rounded-2xl flex items-center gap-2 text-sm font-bold">
                     <span class="text-emerald-400">Questão</span>
@@ -416,16 +416,19 @@
                     <span id="quiz-q-total" class="text-slate-300">25</span>
                 </div>
 
+                <!-- Timer Circular -->
                 <div id="quiz-timer-circle" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-600 border-4 border-white/20 flex items-center justify-center font-display text-2xl sm:text-3xl font-extrabold shadow-lg transition-colors">
                     20
                 </div>
 
+                <!-- Contador de Respostas (Host) ou Pontuação Atual (Jogador/Solo) -->
                 <div id="quiz-right-status" class="glass-card px-4 py-2 rounded-2xl text-right">
                     <span id="quiz-status-label" class="text-[11px] uppercase tracking-wider text-slate-400 block">Respostas</span>
                     <span id="quiz-status-value" class="font-display text-lg font-bold text-emerald-400">0 / 0</span>
                 </div>
             </div>
 
+            <!-- Enunciado da Pergunta -->
             <div class="glass-card rounded-3xl p-6 sm:p-8 mb-6 text-center shadow-xl border border-white/20">
                 <span id="quiz-category-tag" class="inline-block px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold mb-3">
                     Fundamentos da Teoria
@@ -435,29 +438,30 @@
                 </h2>
             </div>
 
+            <!-- Grid das 4 Alternativas Estilo Kahoot -->
             <div id="quiz-options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button type="button" data-option-index="0" id="opt-btn-0" class="kahoot-btn btn-red rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
+                <button type="button" data-opt="0" id="opt-btn-0" class="kahoot-btn btn-red rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
                     <div class="w-12 h-12 rounded-xl bg-black/20 flex items-center justify-center shrink-0 text-2xl">
                         <i class="fa-solid fa-play -rotate-90"></i>
                     </div>
                     <span id="opt-text-0" class="font-bold text-base sm:text-lg leading-snug">Alternativa A</span>
                 </button>
 
-                <button type="button" data-option-index="1" id="opt-btn-1" class="kahoot-btn btn-blue rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
+                <button type="button" data-opt="1" id="opt-btn-1" class="kahoot-btn btn-blue rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
                     <div class="w-12 h-12 rounded-xl bg-black/20 flex items-center justify-center shrink-0 text-2xl">
                         <i class="fa-solid fa-diamond"></i>
                     </div>
                     <span id="opt-text-1" class="font-bold text-base sm:text-lg leading-snug">Alternativa B</span>
                 </button>
 
-                <button type="button" data-option-index="2" id="opt-btn-2" class="kahoot-btn btn-yellow rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
+                <button type="button" data-opt="2" id="opt-btn-2" class="kahoot-btn btn-yellow rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
                     <div class="w-12 h-12 rounded-xl bg-black/20 flex items-center justify-center shrink-0 text-2xl">
                         <i class="fa-solid fa-circle"></i>
                     </div>
                     <span id="opt-text-2" class="font-bold text-base sm:text-lg leading-snug">Alternativa C</span>
                 </button>
 
-                <button type="button" data-option-index="3" id="opt-btn-3" class="kahoot-btn btn-green rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
+                <button type="button" data-opt="3" id="opt-btn-3" class="kahoot-btn btn-green rounded-2xl p-4 sm:p-6 text-left flex items-center gap-4 min-h-[82px] sm:min-h-[96px] cursor-pointer">
                     <div class="w-12 h-12 rounded-xl bg-black/20 flex items-center justify-center shrink-0 text-2xl">
                         <i class="fa-solid fa-square"></i>
                     </div>
@@ -465,14 +469,16 @@
                 </button>
             </div>
 
+            <!-- Feedback imediato para o jogador após clicar -->
             <div id="player-answered-banner" class="hidden mt-6 glass-card rounded-2xl p-5 text-center border border-emerald-400/40 animate-pop">
                 <i class="fa-solid fa-check-circle text-3xl text-emerald-400 mb-2"></i>
                 <h4 class="font-display text-lg font-bold">Resposta Registrada!</h4>
                 <p class="text-slate-300 text-sm">Aguardando o tempo encerrar para revelar o resultado...</p>
             </div>
 
+            <!-- Botão do Host para encerrar tempo antecipadamente -->
             <div id="host-skip-timer-box" class="hidden mt-6 text-center">
-                <button id="btn-host-force-reveal" type="button" class="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs sm:text-sm font-semibold transition cursor-pointer">
+                <button id="btn-host-skip-timer" type="button" class="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs sm:text-sm font-semibold transition cursor-pointer">
                     <i class="fa-solid fa-forward-step mr-1"></i> Encerrar Tempo & Mostrar Resposta
                 </button>
             </div>
@@ -483,6 +489,7 @@
         <!-- ========================================================= -->
         <section id="view-round-result" class="hidden w-full max-w-4xl animate-pop">
             <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl">
+                <!-- Banner de Acerto/Erro -->
                 <div id="round-feedback-header" class="text-center mb-6">
                     <div id="round-icon-badge" class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-3">
                         <i class="fa-solid fa-check"></i>
@@ -491,6 +498,7 @@
                     <p id="round-result-subtitle" class="text-emerald-300 font-semibold text-sm sm:text-base">+850 pontos</p>
                 </div>
 
+                <!-- Explicação Didática da Resposta -->
                 <div class="bg-slate-950/60 border border-emerald-400/30 rounded-2xl p-4 sm:p-5 mb-6">
                     <div class="flex items-start gap-3">
                         <i class="fa-solid fa-lightbulb text-amber-400 text-xl mt-0.5"></i>
@@ -505,6 +513,7 @@
                     </div>
                 </div>
 
+                <!-- Gráfico de Distribuição das Respostas -->
                 <div class="mb-6">
                     <h4 class="text-xs uppercase tracking-wider text-slate-400 font-bold mb-3">Distribuição das Respostas da Turma</h4>
                     <div class="grid grid-cols-4 gap-3 items-end h-28 bg-slate-950/40 p-3 rounded-2xl">
@@ -531,6 +540,7 @@
                     </div>
                 </div>
 
+                <!-- Ranking Parcial Top 5 -->
                 <div id="round-leaderboard-box" class="mb-6">
                     <h4 class="font-display text-base font-bold mb-3 flex items-center gap-2 text-amber-300">
                         <i class="fa-solid fa-trophy"></i>
@@ -539,6 +549,7 @@
                     <div id="round-leaderboard-list" class="space-y-2"></div>
                 </div>
 
+                <!-- Botão Próxima Pergunta -->
                 <div class="text-center">
                     <button id="btn-next-question" type="button" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 font-display font-bold text-lg shadow-lg transition inline-flex items-center justify-center gap-2 cursor-pointer">
                         <span>Próxima Questão</span>
@@ -563,6 +574,7 @@
                     Pódio dos Campeões!
                 </h2>
 
+                <!-- Pódio Visual 2º - 1º - 3º -->
                 <div id="podium-visual-stage" class="flex items-end justify-center gap-2 sm:gap-5 mb-10 pt-6">
                     <div id="podium-place-2" class="flex flex-col items-center w-28 sm:w-36">
                         <div class="text-2xl sm:text-3xl mb-1">🥈</div>
@@ -592,6 +604,7 @@
                     </div>
                 </div>
 
+                <!-- Tabela Completa de Classificação -->
                 <div class="text-left bg-slate-950/50 rounded-2xl p-4 sm:p-6 mb-8 border border-white/10">
                     <h4 class="font-display text-base sm:text-lg font-bold mb-4 flex items-center gap-2">
                         <i class="fa-solid fa-ranking-star text-emerald-400"></i>
@@ -600,11 +613,9 @@
                     <div id="final-ranking-list" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
 
+                <!-- Botões Finais -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button id="btn-play-again" type="button" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-display font-bold text-lg shadow-lg transition cursor-pointer">
-                        <i class="fa-solid fa-bolt mr-2"></i> Jogar Novamente
-                    </button>
-                    <button id="btn-back-home" type="button" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-lg shadow-lg transition cursor-pointer">
+                    <button id="btn-podium-home" type="button" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-lg shadow-lg transition cursor-pointer">
                         <i class="fa-solid fa-rotate-left mr-2"></i> Voltar ao Início
                     </button>
                 </div>
@@ -614,846 +625,991 @@
     </main>
 
     <!-- ========================================================= -->
-    <!-- SCRIPT PRINCIPAL (BANCO 300+ QUESTÕES + REDE + ÁUDIO + UI)  -->
+    <!-- SCRIPT PRINCIPAL MODULAR (320 QUESTÕES + QR CODE + P2P)     -->
     <!-- ========================================================= -->
     <script>
-        (function () {
-            "use strict";
+    (function () {
+        'use strict';
 
-            // =========================================================================
-            // 1. BANCO DE PERGUNTAS (10 OBRIGATÓRIAS + GERADOR DETERMINÍSTICO > 300)
-            // =========================================================================
-            const CORE_QUESTIONS = [
+        const GAME_BASE_URL = "https://malulluna.github.io/quizleininger/";
+        const USED_QUESTIONS_STORAGE_KEY = "leininger_used_question_ids_v320";
+
+        // =========================================================================
+        // 1. BANCO DE 320 PERGUNTAS ÚNICAS SOBRE MADELEINE LEININGER
+        //    Primeiras 10 perguntas obrigatórias + 310 questões únicas geradas
+        // =========================================================================
+        const MANDATORY_10_QUESTIONS = [
+            {
+                id: 1,
+                q: "1. Quem foi Madeleine Leininger?",
+                options: ["Médica e psicóloga", "Enfermeira e antropóloga", "Farmacêutica", "Fisioterapeuta"],
+                correct: 1,
+                category: "Biografia & História",
+                explanation: "Nascida em 1925 nos EUA, Madeleine Leininger foi enfermeira e tornou-se a primeira enfermeira a obter doutorado em Antropologia, unindo as duas áreas."
+            },
+            {
+                id: 2,
+                q: "2. Qual teoria Madeleine Leininger desenvolveu?",
+                options: ["Teoria Ambientalista", "Teoria das Necessidades Humanas", "Teoria do Cuidado Transcultural", "Teoria do Autocuidado"],
+                correct: 2,
+                category: "Fundamentos da Teoria",
+                explanation: "Ela criou a Teoria da Diversidade e Universalidade do Cuidado Cultural, amplamente conhecida como Teoria do Cuidado Transcultural."
+            },
+            {
+                id: 3,
+                q: "3. O que a teoria de Leininger valoriza principalmente?",
+                options: ["Apenas os procedimentos técnicos", "A cultura e as crenças do paciente", "O uso de medicamentos", "A rapidez no atendimento"],
+                correct: 1,
+                category: "Valores do Cuidado",
+                explanation: "Leininger defendia que o cuidado vai além da técnica biomédica, devendo integrar valores, crenças e modos de vida de cada pessoa."
+            },
+            {
+                id: 4,
+                q: "4. Segundo Leininger, o cuidado de enfermagem deve ser:",
+                options: ["Igual para todos, sem considerar diferenças", "Baseado apenas no diagnóstico", "Individualizado e respeitoso com a cultura", "Realizado sem comunicação"],
+                correct: 2,
+                category: "Prática Assistencial",
+                explanation: "Cada indivíduo vivencia a saúde e a doença segundo sua bagagem cultural; portanto, o cuidado precisa ser personalizado e culturalmente congruente."
+            },
+            {
+                id: 5,
+                q: "5. O que significa preservação do cuidado cultural?",
+                options: ["Respeitar e manter práticas culturais benéficas", "Proibir hábitos culturais", "Ignorar as crenças", "Substituir todos os costumes"],
+                correct: 0,
+                category: "Modos de Decisão",
+                explanation: "A Preservação ou Manutenção ocorre quando os hábitos culturais do paciente trazem bem-estar e não prejudicam sua recuperação clínica."
+            },
+            {
+                id: 6,
+                q: "6. O que significa acomodação ou negociação do cuidado cultural?",
+                options: ["Obrigar o paciente a aceitar o tratamento", "Adaptar ou negociar o cuidado respeitando a cultura", "Ignorar as necessidades do paciente", "Evitar conversar com a família"],
+                correct: 1,
+                category: "Modos de Decisão",
+                explanation: "A Acomodação/Negociação envolve ajustar horários, dietas ou rotinas hospitalares para respeitar crenças do paciente sem comprometer o tratamento."
+            },
+            {
+                id: 7,
+                q: "7. O que é repadronização do cuidado cultural?",
+                options: ["Manter todos os hábitos, mesmo prejudiciais", "Ignorar os hábitos do paciente", "Orientar mudanças em práticas que possam prejudicar a saúde", "Realizar apenas procedimentos médicos"],
+                correct: 2,
+                category: "Modos de Decisão",
+                explanation: "Na Repadronização/Reestruturação, o enfermeiro dialoga e ajuda o paciente a modificar hábitos nocivos à saúde, respeitando sua dignidade."
+            },
+            {
+                id: 8,
+                q: "8. Um paciente deseja seguir um costume cultural durante sua internação. O que o profissional deve fazer?",
+                options: ["Ridicularizar o costume", "Ignorar o paciente", "Buscar compreender e respeitar, quando possível, o costume", "Proibir imediatamente"],
+                correct: 2,
+                category: "Ética & Conduta",
+                explanation: "A escuta ativa e o respeito cultural fortalecem o vínculo terapêutico e aumentam a adesão do paciente ao cuidado."
+            },
+            {
+                id: 9,
+                q: "9. A teoria de Leininger contribui para qual tipo de assistência?",
+                options: ["Assistência desumanizada", "Assistência humanizada", "Assistência sem diálogo", "Assistência exclusivamente técnica"],
+                correct: 1,
+                category: "Humanização",
+                explanation: "Ao enxergar o paciente em sua totalidade biopsicossocial e espiritual, o cuidado transcultural promove uma enfermagem profundamente humanizada."
+            },
+            {
+                id: 10,
+                q: "10. Para Leininger, cuidar de um paciente significa:",
+                options: ["Apenas administrar medicamentos", "Apenas realizar curativos", "Compreender o paciente, respeitando sua cultura e individualidade", "Seguir uma rotina sem adaptações"],
+                correct: 2,
+                category: "Essência do Cuidar",
+                explanation: "Para Leininger, 'o cuidado é a essência da enfermagem', e não há cura completa sem o cuidado culturalmente sensível."
+            }
+        ];
+
+        function build320QuestionBank() {
+            const bank = MANDATORY_10_QUESTIONS.map((item, i) => ({
+                ...item,
+                num: i + 1
+            }));
+
+            const templates = [
                 {
-                    id: "core-01",
-                    q: "Quem foi Madeleine Leininger?",
-                    options: [
-                        "Médica e psicóloga",
-                        "Enfermeira e antropóloga",
-                        "Farmacêutica",
-                        "Fisioterapeuta"
+                    category: "Modelo Sunrise (Sol Nascente)",
+                    makeQ: (n, factor, focus) => `${n}. No Modelo Sunrise de Leininger, como o fator "${factor}" influencia ${focus}?`,
+                    correctText: (factor, focus) => `Moldando significados e escolhas ligados a ${focus} por meio de ${factor}`,
+                    wrongTexts: (factor, focus) => [
+                        `Eliminando totalmente a necessidade de avaliar ${focus}`,
+                        `Substituindo a escuta do paciente por protocolos rígidos sem ${factor}`,
+                        `Tornando ${focus} idêntico em todas as populações sem exceção`
                     ],
-                    correct: 1,
-                    category: "Biografia & História",
-                    explanation: "Nascida em 1925 nos EUA, Madeleine Leininger foi enfermeira e tornou-se a primeira enfermeira a obter doutorado em Antropologia, unindo as duas áreas."
+                    explain: (factor, focus) => `No Modelo Sunrise, dimensões como ${factor} integram a visão de mundo e a estrutura social que afetam ${focus}.`
                 },
                 {
-                    id: "core-02",
-                    q: "Qual teoria Madeleine Leininger desenvolveu?",
-                    options: [
-                        "Teoria Ambientalista",
-                        "Teoria das Necessidades Humanas",
-                        "Teoria do Cuidado Transcultural",
-                        "Teoria do Autocuidado"
+                    category: "Preservação Cultural",
+                    makeQ: (n, practice, context) => `${n}. Em ${context}, quando a prática "${practice}" é benéfica e segura, qual conduta representa a Preservação Cultural?`,
+                    correctText: (practice) => `Apoiar e manter "${practice}" no plano de cuidado`,
+                    wrongTexts: (practice) => [
+                        `Proibir "${practice}" apenas por não constar na rotina padrão`,
+                        `Desconsiderar o relato familiar sobre "${practice}"`,
+                        `Substituir "${practice}" sem avaliação clínica prévia`
                     ],
-                    correct: 2,
-                    category: "Fundamentos da Teoria",
-                    explanation: "Ela criou a Teoria da Diversidade e Universalidade do Cuidado Cultural, amplamente conhecida como Teoria do Cuidado Transcultural."
+                    explain: (practice, context) => `A preservação/manutenção cultural valoriza práticas como "${practice}" em ${context} quando são seguras e promovem bem-estar.`
                 },
                 {
-                    id: "core-03",
-                    q: "O que a teoria de Leininger valoriza principalmente?",
-                    options: [
-                        "Apenas os procedimentos técnicos",
-                        "A cultura e as crenças do paciente",
-                        "O uso de medicamentos",
-                        "A rapidez no atendimento"
+                    category: "Acomodação / Negociação Cultural",
+                    makeQ: (n, belief, setting) => `${n}. Durante ${setting}, diante da crença "${belief}", o que caracteriza a Acomodação ou Negociação Cultural?`,
+                    correctText: (belief) => `Adaptar a assistência em diálogo para conciliar "${belief}" e segurança clínica`,
+                    wrongTexts: (belief) => [
+                        `Impor uma única conduta ignorando "${belief}"`,
+                        `Encerrar o atendimento ao identificar "${belief}"`,
+                        `Exigir que o paciente abra mão de "${belief}" sem explicação`
                     ],
-                    correct: 1,
-                    category: "Valores do Cuidado",
-                    explanation: "Leininger defendia que o cuidado vai além da técnica biomédica, devendo integrar valores, crenças e modos de vida de cada pessoa."
+                    explain: (belief, setting) => `A acomodação/negociação busca acordos respeitosos em ${setting}, integrando "${belief}" sem comprometer a segurança do paciente.`
                 },
                 {
-                    id: "core-04",
-                    q: "Segundo Leininger, o cuidado de enfermagem deve ser:",
-                    options: [
-                        "Igual para todos, sem considerar diferenças",
-                        "Baseado apenas no diagnóstico",
-                        "Individualizado e respeitoso com a cultura",
-                        "Realizado sem comunicação"
+                    category: "Repadronização Cultural",
+                    makeQ: (n, riskHabit, goal) => `${n}. Quando o hábito "${riskHabit}" ameaça ${goal}, qual é o papel da Repadronização Cultural segundo Leininger?`,
+                    correctText: (riskHabit, goal) => `Dialogar e orientar mudanças seguras para proteger ${goal} sem desrespeitar a pessoa`,
+                    wrongTexts: (riskHabit) => [
+                        `Manter "${riskHabit}" mesmo sabendo do risco grave à saúde`,
+                        `Julgar ou ridicularizar quem pratica "${riskHabit}"`,
+                        `Ignorar o significado cultural de "${riskHabit}" ao orientar`
                     ],
-                    correct: 2,
-                    category: "Prática Assistencial",
-                    explanation: "Cada indivíduo vivencia a saúde e a doença segundo sua bagagem cultural; portanto, o cuidado precisa ser personalizado e culturalmente congruente."
+                    explain: (riskHabit, goal) => `A repadronização/reestruturação ajuda o paciente a transformar hábitos como "${riskHabit}" visando ${goal}, com respeito e empatia.`
                 },
                 {
-                    id: "core-05",
-                    q: "O que significa preservação do cuidado cultural?",
-                    options: [
-                        "Respeitar e manter práticas culturais benéficas",
-                        "Proibir hábitos culturais",
-                        "Ignorar as crenças",
-                        "Substituir todos os costumes"
+                    category: "Etnoenfermagem & Pesquisa",
+                    makeQ: (n, methodFocus, group) => `${n}. Na pesquisa em Etnoenfermagem proposta por Leininger junto a ${group}, o que prioriza ${methodFocus}?`,
+                    correctText: (methodFocus, group) => `Compreender ${methodFocus} a partir da perspectiva vivida por ${group}`,
+                    wrongTexts: (group) => [
+                        `Impor categorias externas sem ouvir ${group}`,
+                        `Descartar relatos qualitativos de ${group}`,
+                        `Assumir que todos os integrantes de ${group} pensam igual`
                     ],
-                    correct: 0,
-                    category: "Modos de Decisão",
-                    explanation: "A Preservação ou Manutenção ocorre quando os hábitos culturais do paciente trazem bem-estar e não prejudicam sua recuperação clínica."
+                    explain: (methodFocus, group) => `A etnoenfermagem busca captar ${methodFocus} no contexto natural de ${group}, respeitando seus próprios significados culturais.`
                 },
                 {
-                    id: "core-06",
-                    q: "O que significa acomodação ou negociação do cuidado cultural?",
-                    options: [
-                        "Obrigar o paciente a aceitar o tratamento",
-                        "Adaptar ou negociar o cuidado respeitando a cultura",
-                        "Ignorar as necessidades do paciente",
-                        "Evitar conversar com a família"
+                    category: "Cuidado Genérico vs. Profissional",
+                    makeQ: (n, folkElem, profElem) => `${n}. Ao articular saberes populares como "${folkElem}" com "${profElem}", o enfermeiro promove:`,
+                    correctText: (profElem) => `Cuidado culturalmente congruente, integrando saberes populares e ${profElem}`,
+                    wrongTexts: (folkElem) => [
+                        `Rejeição automática de qualquer saber como "${folkElem}"`,
+                        `Abandono da base científica em favor apenas de "${folkElem}"`,
+                        `Atendimento padronizado sem diálogo com o paciente`
                     ],
-                    correct: 1,
-                    category: "Modos de Decisão",
-                    explanation: "A Acomodação/Negociação envolve ajustar horários, dietas ou rotinas hospitalares para respeitar crenças do paciente sem comprometer o tratamento."
+                    explain: (folkElem, profElem) => `Leininger destaca a ponte entre o cuidado genérico/popular ("${folkElem}") e o cuidado profissional baseado em ${profElem}.`
                 },
                 {
-                    id: "core-07",
-                    q: "O que é repadronização do cuidado cultural?",
-                    options: [
-                        "Manter todos os hábitos, mesmo prejudiciais",
-                        "Ignorar os hábitos do paciente",
-                        "Orientar mudanças em práticas que possam prejudicar a saúde",
-                        "Realizar apenas procedimentos médicos"
+                    category: "Imposição Cultural & Etnocentrismo",
+                    makeQ: (n, attitude, impact) => `${n}. Na perspectiva transcultural, o que ocorre quando a equipe adota "${attitude}" e gera "${impact}"?`,
+                    correctText: (impact) => `Risco de distanciamento terapêutico e "${impact}" no cuidado`,
+                    wrongTexts: () => [
+                        `Aumento automático da confiança cultural sem diálogo`,
+                        `Aplicação plena da acomodação cultural negociada`,
+                        `Eliminação de barreiras de comunicação sem escuta`
                     ],
-                    correct: 2,
-                    category: "Modos de Decisão",
-                    explanation: "Na Repadronização/Reestruturação, o enfermeiro dialoga e ajuda o paciente a modificar hábitos nocivos à saúde, respeitando sua dignidade."
+                    explain: (attitude, impact) => `Atitudes como "${attitude}" podem provocar "${impact}", contrariando o cuidado respeitoso defendido por Madeleine Leininger.`
                 },
                 {
-                    id: "core-08",
-                    q: "Um paciente deseja seguir um costume cultural durante sua internação. O que o profissional deve fazer?",
-                    options: [
-                        "Ridicularizar o costume",
-                        "Ignorar o paciente",
-                        "Buscar compreender e respeitar, quando possível, o costume",
-                        "Proibir imediatamente"
+                    category: "História da Enfermagem & SUS",
+                    makeQ: (n, contextArea, value) => `${n}. Na formação em Enfermagem e na atuação em ${contextArea}, qual contribuição de Leininger fortalece ${value}?`,
+                    correctText: (value) => `A valorização da diversidade cultural como base para ${value}`,
+                    wrongTexts: () => [
+                        `A redução da enfermagem a tarefas mecânicas isoladas`,
+                        `A desconsideração das crenças religiosas e familiares`,
+                        `A padronização rígida sem olhar para a individualidade`
                     ],
-                    correct: 2,
-                    category: "Ética & Conduta",
-                    explanation: "A escuta ativa e o respeito cultural fortalecem o vínculo terapêutico e aumentam a adesão do paciente ao cuidado."
-                },
-                {
-                    id: "core-09",
-                    q: "A teoria de Leininger contribui para qual tipo de assistência?",
-                    options: [
-                        "Assistência desumanizada",
-                        "Assistência humanizada",
-                        "Assistência sem diálogo",
-                        "Assistência exclusivamente técnica"
-                    ],
-                    correct: 1,
-                    category: "Humanização",
-                    explanation: "Ao enxergar o paciente em sua totalidade biopsicossocial e espiritual, o cuidado transcultural promove uma enfermagem profundamente humanizada."
-                },
-                {
-                    id: "core-10",
-                    q: "Para Leininger, cuidar de um paciente significa:",
-                    options: [
-                        "Apenas administrar medicamentos",
-                        "Apenas realizar curativos",
-                        "Compreender o paciente, respeitando sua cultura e individualidade",
-                        "Seguir uma rotina sem adaptações"
-                    ],
-                    correct: 2,
-                    category: "Essência do Cuidar",
-                    explanation: "Para Leininger, 'o cuidado é a essência da enfermagem', e não há cura completa sem o cuidado culturalmente sensível."
+                    explain: (contextArea, value) => `Em ${contextArea}, a teoria de Leininger apoia ${value}, conectando História da Enfermagem, antropologia e prática clínica.`
                 }
             ];
 
-            function buildQuestionBank() {
-                const bank = [];
-                const seenTexts = new Set();
+            const topicsA = [
+                "crenças religiosas", "tradições familiares", "hábitos alimentares", "visão de mundo",
+                "práticas espirituais", "língua e comunicação", "papéis de gênero", "rede de apoio comunitária",
+                "rituais de nascimento", "rituais de luto", "uso de chás e plantas", "relação com o corpo",
+                "percepção da dor", "autoridade familiar", "costumes de higiene", "modos de descanso",
+                "crenças sobre doença", "esperança e fé", "vínculos intergeracionais", "identidade étnica"
+            ];
 
-                function addUniqueQuestion(item) {
-                    const key = item.q.trim().toLowerCase();
-                    if (seenTexts.has(key)) return;
-                    if (!Array.isArray(item.options) || item.options.length !== 4) return;
-                    if (typeof item.correct !== "number" || item.correct < 0 || item.correct > 3) return;
-                    seenTexts.add(key);
-                    bank.push({
-                        id: item.id || `q-${bank.length + 1}`,
-                        q: item.q.trim(),
-                        options: item.options.slice(0, 4),
-                        correct: item.correct,
-                        category: item.category || "Enfermagem Transcultural",
-                        explanation: item.explanation || "Fundamentado na Teoria do Cuidado Transcultural de Madeleine Leininger."
-                    });
+            const topicsB = [
+                "a adesão ao tratamento", "o acolhimento na internação", "a saúde materno-infantil",
+                "o cuidado ao idoso", "a saúde mental e emocional", "a comunicação terapêutica",
+                "a segurança do paciente", "o vínculo com a equipe", "a recuperação pós-operatória",
+                "o cuidado na atenção primária", "a autonomia do paciente", "a humanização da assistência",
+                "a escuta clínica qualificada", "o plano de cuidados de enfermagem", "a prevenção de agravos"
+            ];
+
+            let nextId = 11;
+            let tIdx = 0;
+            let aIdx = 0;
+            let bIdx = 0;
+
+            while (bank.length < 320) {
+                const tpl = templates[tIdx % templates.length];
+                const itemA = topicsA[aIdx % topicsA.length];
+                const itemB = topicsB[bIdx % topicsB.length];
+
+                const qText = tpl.makeQ(nextId, itemA, itemB);
+                const correctAns = tpl.correctText(itemA, itemB);
+                const wrongs = tpl.wrongTexts(itemA, itemB);
+
+                // Rotaciona a posição correta (0, 1, 2, 3) de forma equilibrada
+                const correctPos = (nextId + tIdx) % 4;
+                const options = [null, null, null, null];
+                options[correctPos] = correctAns;
+                let wPointer = 0;
+                for (let pos = 0; pos < 4; pos++) {
+                    if (pos !== correctPos) {
+                        options[pos] = wrongs[wPointer % wrongs.length];
+                        wPointer++;
+                    }
                 }
 
-                // 1. Adiciona as 10 perguntas obrigatórias exatas
-                CORE_QUESTIONS.forEach((cq, idx) => {
-                    addUniqueQuestion({
-                        id: `q-${String(idx + 1).padStart(3, "0")}`,
-                        q: cq.q.replace(/^\d+\.\s*/, ""),
-                        options: cq.options,
-                        correct: cq.correct,
-                        category: cq.category,
-                        explanation: cq.explanation
-                    });
+                bank.push({
+                    id: nextId,
+                    num: nextId,
+                    q: qText,
+                    options,
+                    correct: correctPos,
+                    category: tpl.category,
+                    explanation: tpl.explain(itemA, itemB)
                 });
 
-                // 2. Temas e variações para alcançar mais de 300 perguntas únicas e educativas
-                const scenarios = [
-                    {
-                        context: "durante uma consulta de enfermagem na atenção básica",
-                        correctOpt: "Acolher a visão de mundo da pessoa e negociar o plano de cuidado",
-                        distractors: [
-                            "Aplicar protocolo padrão ignorando o contexto familiar",
-                            "Desconsiderar crenças tradicionais sem diálogo",
-                            "Limitar o encontro à entrega mecânica de receita"
-                        ],
-                        cat: "Cenários Clínicos",
-                        exp: "Na prática clínica, compreender a cultura e negociar o cuidado promove adesão segura e respeitosa."
-                    },
-                    {
-                        context: "ao assistir uma família com fortes tradições alimentares e religiosas",
-                        correctOpt: "Avaliar o impacto cultural e adaptar a orientação nutricional com segurança",
-                        distractors: [
-                            "Proibir qualquer alimento tradicional sem avaliação clínica",
-                            "Impor dieta rígida sem explicar ou ouvir a família",
-                            "Tratar costumes alimentares como irrelevantes para o cuidado"
-                        ],
-                        cat: "Acomodação Cultural",
-                        exp: "A acomodação/negociação cultural harmoniza valores alimentares e religiosos com a segurança terapêutica."
-                    },
-                    {
-                        context: "ao identificar uma prática popular benéfica e segura para o paciente",
-                        correctOpt: "Preservar e apoiar o costume cultural benéfico",
-                        distractors: [
-                            "Substituir o costume por rotina hospitalar sem justificativa",
-                            "Ignorar o significado simbólico da prática para o paciente",
-                            "Criticar o hábito tradicional perante a equipe"
-                        ],
-                        cat: "Preservação Cultural",
-                        exp: "A preservação do cuidado cultural mantém práticas tradicionais que apoiam o bem-estar e não oferecem risco."
-                    },
-                    {
-                        context: "ao observar um hábito cultural que apresenta risco real à saúde",
-                        correctOpt: "Dialogar com empatia e orientar a repadronização segura do cuidado",
-                        distractors: [
-                            "Manter conduta de risco apenas para evitar conversa",
-                            "Repreender o paciente com tom punitivo ou julgador",
-                            "Suspender o cuidado sem orientar alternativas seguras"
-                        ],
-                        cat: "Repadronização Cultural",
-                        exp: "A repadronização cultural busca transformar hábitos prejudiciais por meio de diálogo respeitoso e educação em saúde."
-                    },
-                    {
-                        context: "ao aplicar os princípios do Modelo Sunrise (Sol Nascente) de Leininger",
-                        correctOpt: "Considerar fatores culturais, sociais, religiosos, econômicos e políticos",
-                        distractors: [
-                            "Avaliar exclusivamente sinais vitais isolados do contexto social",
-                            "Assumir que todos os grupos vivenciam a doença da mesma forma",
-                            "Separar totalmente a dimensão espiritual da assistência"
-                        ],
-                        cat: "Modelo Sunrise",
-                        exp: "O Modelo Sunrise evidencia como dimensões culturais, religiosas, familiares, econômicas e políticas influenciam o cuidado."
-                    },
-                    {
-                        context: "ao utilizar a abordagem da Etnoenfermagem proposta por Leininger",
-                        correctOpt: "Buscar compreender os significados do cuidado a partir da perspectiva do grupo",
-                        distractors: [
-                            "Impor categorias externas sem ouvir os participantes",
-                            "Ignorar narrativas e histórias de vida locais",
-                            "Reduzir o cuidado a procedimentos técnicos repetitivos"
-                        ],
-                        cat: "Etnoenfermagem",
-                        exp: "A etnoenfermagem valoriza a perspectiva êmica (de quem vivencia a cultura) articulada ao conhecimento profissional."
-                    },
-                    {
-                        context: "ao prevenir o etnocentrismo e a imposição cultural na equipe de enfermagem",
-                        correctOpt: "Praticar humildade cultural, escuta ativa e respeito à diversidade",
-                        distractors: [
-                            "Exigir que o paciente abra mão de sua identidade cultural",
-                            "Considerar a cultura profissional superior a qualquer saber popular",
-                            "Padronizar o atendimento sem considerar diferenças étnicas"
-                        ],
-                        cat: "Segurança & Humildade Cultural",
-                        exp: "A humildade cultural e o cuidado culturalmente congruente combatem o etnocentrismo e reduzem barreiras no cuidado."
-                    },
-                    {
-                        context: "no contexto histórico da enfermagem e da criação da teoria transcultural",
-                        correctOpt: "Integrar antropologia e enfermagem para responder à diversidade humana",
-                        distractors: [
-                            "Substituir a enfermagem pela antropologia pura",
-                            "Restringir a enfermagem apenas a tarefas hospitalares antigas",
-                            "Desconsiderar o impacto da globalização e migrações na saúde"
-                        ],
-                        cat: "História da Enfermagem",
-                        exp: "Madeleine Leininger articulou enfermagem e antropologia a partir da década de 1950 para cuidar da diversidade humana."
-                    }
-                ];
-
-                const focusAspects = [
-                    "na acolhida inicial do paciente",
-                    "no planejamento do cuidado de enfermagem",
-                    "na comunicação com familiares e cuidadores",
-                    "na humanização da assistência hospitalar",
-                    "na promoção do cuidado culturalmente congruente",
-                    "na atenção a populações diversas e vulneráveis",
-                    "na formação ética e crítica do estudante de enfermagem",
-                    "na articulação entre cuidado genérico e cuidado profissional",
-                    "na prevenção de conflitos e ruídos culturais no cuidado",
-                    "na valorização da individualidade e dignidade humana"
-                ];
-
-                const stems = [
-                    "Segundo Madeleine Leininger, {aspect} {scenario}, a conduta mais alinhada à Teoria do Cuidado Transcultural é:",
-                    "Na perspectiva da Enfermagem Transcultural, {aspect} {scenario}, o enfermeiro deve:",
-                    "Considerando a Teoria da Diversidade e Universalidade do Cuidado Cultural, {aspect} {scenario}, qual prática é indicada?",
-                    "Em uma abordagem baseada em Madeleine Leininger, {aspect} {scenario}, o cuidado de enfermagem busca:",
-                    "Para promover um cuidado culturalmente sensível, {aspect} {scenario}, o profissional deve:"
-                ];
-
-                let counter = bank.length + 1;
-
-                for (let sIdx = 0; sIdx < scenarios.length; sIdx++) {
-                    for (let aIdx = 0; aIdx < focusAspects.length; aIdx++) {
-                        for (let stIdx = 0; stIdx < stems.length; stIdx++) {
-                            if (bank.length >= 320) break;
-
-                            const sc = scenarios[sIdx];
-                            const aspect = focusAspects[aIdx];
-                            const stem = stems[stIdx];
-
-                            const qText = stem
-                                .replace("{aspect}", aspect)
-                                .replace("{scenario}", sc.context);
-
-                            const rawOptions = [
-                                sc.correctOpt,
-                                sc.distractors[0],
-                                sc.distractors[1],
-                                sc.distractors[2]
-                            ];
-
-                            // Rotação determinística para variar a posição da alternativa correta (0..3)
-                            const shift = (sIdx + aIdx + stIdx) % 4;
-                            const rotatedOptions = rawOptions.map((_, i) => rawOptions[(i + shift) % 4]);
-                            const correctIndex = rotatedOptions.indexOf(sc.correctOpt);
-
-                            addUniqueQuestion({
-                                id: `q-${String(counter).padStart(3, "0")}`,
-                                q: qText.charAt(0).toUpperCase() + qText.slice(1),
-                                options: rotatedOptions,
-                                correct: correctIndex,
-                                category: sc.cat,
-                                explanation: `${sc.exp} (Foco: ${aspect}).`
-                            });
-                            counter++;
-                        }
-                        if (bank.length >= 320) break;
-                    }
-                    if (bank.length >= 320) break;
-                }
-
-                return bank;
+                nextId++;
+                tIdx++;
+                if (tIdx % 2 === 0) aIdx++;
+                if (tIdx % 3 === 0) bIdx++;
             }
 
-            const QUESTION_BANK = buildQuestionBank();
+            return bank;
+        }
 
-            // Gerenciamento de perguntas já sorteadas no localStorage (sem repetição até esgotar)
-            const USED_QUESTIONS_STORAGE_KEY = "leininger_quiz_used_ids_v1";
+        const QUESTIONS_DB = build320QuestionBank();
 
-            function getUsedQuestionIds() {
-                try {
-                    const raw = localStorage.getItem(USED_QUESTIONS_STORAGE_KEY);
-                    const parsed = raw ? JSON.parse(raw) : [];
-                    return Array.isArray(parsed) ? parsed : [];
-                } catch (e) {
-                    return [];
-                }
+        function getUsedQuestionIds() {
+            try {
+                const raw = localStorage.getItem(USED_QUESTIONS_STORAGE_KEY);
+                const arr = raw ? JSON.parse(raw) : [];
+                return Array.isArray(arr) ? arr : [];
+            } catch (e) {
+                return [];
             }
+        }
 
-            function saveUsedQuestionIds(idsArray) {
-                try {
-                    localStorage.setItem(USED_QUESTIONS_STORAGE_KEY, JSON.stringify(Array.from(new Set(idsArray))));
-                } catch (e) {}
-            }
+        function saveUsedQuestionIds(ids) {
+            try {
+                localStorage.setItem(USED_QUESTIONS_STORAGE_KEY, JSON.stringify(ids));
+            } catch (e) {}
+        }
 
-            function resetUsedQuestionHistory(showFeedback = true) {
+        function pickNonRepeatingQuestions(count) {
+            const desired = Math.max(1, Math.min(count, QUESTIONS_DB.length));
+            let usedIds = getUsedQuestionIds().filter(id => QUESTIONS_DB.some(q => q.id === id));
+
+            // Se todas as 320 já foram usadas, reinicia o ciclo automaticamente
+            if (usedIds.length >= QUESTIONS_DB.length) {
+                usedIds = [];
                 saveUsedQuestionIds([]);
-                updateBankCounterUI();
-                if (showFeedback) {
-                    showToast("Histórico de perguntas reiniciado! Todas as 300+ questões estão disponíveis.", "success");
+            }
+
+            let available = QUESTIONS_DB.filter(q => !usedIds.includes(q.id));
+
+            // Se restarem menos que o desejado, pega todas as restantes e completa com as mais antigas usadas
+            const selected = [];
+            const shuffledAvail = [...available].sort(() => Math.random() - 0.5);
+            for (const q of shuffledAvail) {
+                if (selected.length < desired) selected.push(q);
+            }
+
+            if (selected.length < desired) {
+                const usedSet = new Set(selected.map(q => q.id));
+                const olderUsed = usedIds
+                    .map(id => QUESTIONS_DB.find(q => q.id === id))
+                    .filter(q => q && !usedSet.has(q.id));
+                for (const q of olderUsed) {
+                    if (selected.length < desired) selected.push(q);
                 }
             }
 
-            function drawNonRepeatingQuestions(count) {
-                const targetCount = Math.max(1, Math.min(count, QUESTION_BANK.length));
-                let usedIds = getUsedQuestionIds();
-                let available = QUESTION_BANK.filter(q => !usedIds.includes(q.id));
+            const newUsed = Array.from(new Set([...usedIds, ...selected.map(q => q.id)]));
+            saveUsedQuestionIds(newUsed);
 
-                let cycled = false;
-                if (available.length < targetCount) {
-                    // Se faltarem questões inéditas, reinicia automaticamente o ciclo para completar a rodada sem duplicar dentro da mesma partida
-                    usedIds = [];
-                    available = [...QUESTION_BANK];
-                    cycled = true;
-                }
+            return selected;
+        }
 
-                // Embaralhamento Fisher-Yates
-                const pool = [...available];
-                for (let i = pool.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    const tmp = pool[i];
-                    pool[i] = pool[j];
-                    pool[j] = tmp;
-                }
+        // =========================================================================
+        // 2. ENCODER QR CODE FUNCIONAL EM CANVAS (APONTANDO PARA https://malulluna.github.io/quizleininger/?pin=XXXXXX)
+        // =========================================================================
+        function buildPinShareUrl(pin) {
+            const cleanPin = String(pin || "").trim();
+            const base = GAME_BASE_URL.endsWith("/") ? GAME_BASE_URL : `${GAME_BASE_URL}/`;
+            return `${base}?pin=${encodeURIComponent(cleanPin)}`;
+        }
 
-                const selected = pool.slice(0, targetCount);
-                const updatedUsed = [...usedIds, ...selected.map(q => q.id)];
-                saveUsedQuestionIds(updatedUsed);
-                updateBankCounterUI();
+        // Implementação limpa e autônoma de QR Code (Versão 4 / 33x33 módulos, correção L, máscara 0)
+        // com padrão de dados real codificando bytes UTF-8 + indicador de modo byte (0100) + contagem de caracteres
+        const QRCodeCanvasRenderer = (function () {
+            // Aritmética GF(256) com polinômio primitivo 0x11d
+            const EXP = new Array(256);
+            const LOG = new Array(256);
+            let x = 1;
+            for (let i = 0; i < 255; i++) {
+                EXP[i] = x;
+                LOG[x] = i;
+                x <<= 1;
+                if (x & 0x100) x ^= 0x11d;
+            }
+            EXP[255] = EXP[0];
 
-                if (cycled) {
-                    showToast("Todas as perguntas do banco já tinham sido usadas — o ciclo foi renovado automaticamente!", "info");
-                }
-
-                return selected;
+            function gfMul(a, b) {
+                if (a === 0 || b === 0) return 0;
+                return EXP[(LOG[a] + LOG[b]) % 255];
             }
 
-            function updateBankCounterUI() {
-                const usedCount = getUsedQuestionIds().length;
-                const remaining = Math.max(0, QUESTION_BANK.length - usedCount);
-                const titleEl = document.getElementById("bank-status-title");
-                const subEl = document.getElementById("header-bank-subtitle");
-                if (titleEl) {
-                    titleEl.textContent = `Banco com ${QUESTION_BANK.length} Questões • ${remaining} Disponíveis Sem Repetir`;
-                }
-                if (subEl) {
-                    subEl.textContent = `Teoria do Cuidado Transcultural • ${QUESTION_BANK.length} Questões`;
-                }
-            }
-
-            // =========================================================================
-            // 2. CAMADA MULTIPLAYER: PEERJS (WEBRTC P2P) + BROADCAST + LOCALSTORAGE
-            // =========================================================================
-            function pinToPeerId(pin) {
-                return `leininger-quiz-${String(pin).trim()}`;
-            }
-
-            class PeerMultiplayerManager {
-                constructor() {
-                    this.peer = null;
-                    this.hostConnections = {};
-                    this.playerConn = null;
-                    this.onMessage = null;
-                    this.activePin = null;
-                    this.role = null;
-                    this.bc = null;
-                    this.storagePollTimer = null;
-                    this.lastStorageTimestamp = Date.now();
-                    this.seenIds = new Set();
-
-                    try {
-                        this.bc = new BroadcastChannel("leininger_peer_fallback_v1");
-                        this.bc.onmessage = (ev) => {
-                            if (ev.data) this._dispatch(ev.data, null);
-                        };
-                    } catch (e) {}
-
-                    this._startStoragePolling();
-                }
-
-                setStatus(state, text) {
-                    const dot = document.getElementById("net-status-dot");
-                    const label = document.getElementById("net-status-label");
-                    if (!dot || !label) return;
-                    label.textContent = text;
-                    if (state === "online") {
-                        dot.className = "w-2 h-2 rounded-full bg-emerald-400";
-                    } else if (state === "pending") {
-                        dot.className = "w-2 h-2 rounded-full bg-amber-400 animate-pulse";
-                    } else {
-                        dot.className = "w-2 h-2 rounded-full bg-sky-400";
+            function rsGeneratorPoly(ecLen) {
+                let poly = [1];
+                for (let i = 0; i < ecLen; i++) {
+                    const next = new Array(poly.length + 1).fill(0);
+                    const root = EXP[i];
+                    for (let j = 0; j < poly.length; j++) {
+                        next[j] ^= poly[j];
+                        next[j + 1] ^= gfMul(poly[j], root);
                     }
+                    poly = next;
                 }
+                return poly;
+            }
 
-                _startStoragePolling() {
-                    clearInterval(this.storagePollTimer);
-                    this.storagePollTimer = setInterval(() => {
-                        if (!this.activePin) return;
-                        try {
-                            const key = `lein_bus_${this.activePin}`;
-                            const raw = localStorage.getItem(key);
-                            if (!raw) return;
-                            const item = JSON.parse(raw);
-                            if (item && item.envelope && item.ts > this.lastStorageTimestamp) {
-                                this.lastStorageTimestamp = item.ts;
-                                this._dispatch(item.envelope, null);
-                            }
-                        } catch (e) {}
-                    }, 350);
-                }
-
-                _writeStorageBus(pin, envelope) {
-                    try {
-                        const ts = Date.now() + Math.random();
-                        this.lastStorageTimestamp = ts;
-                        localStorage.setItem(`lein_bus_${pin}`, JSON.stringify({ ts, envelope }));
-                    } catch (e) {}
-                }
-
-                _dispatch(envelope, conn) {
-                    if (!envelope || !envelope._pin) return;
-                    if (this.activePin && String(envelope._pin) !== String(this.activePin)) return;
-                    if (envelope._id) {
-                        if (this.seenIds.has(envelope._id)) return;
-                        this.seenIds.add(envelope._id);
-                        if (this.seenIds.size > 500) {
-                            const first = this.seenIds.values().next().value;
-                            this.seenIds.delete(first);
+            function rsEncode(dataBytes, ecLen) {
+                const gen = rsGeneratorPoly(ecLen);
+                const msg = dataBytes.concat(new Array(ecLen).fill(0));
+                for (let i = 0; i < dataBytes.length; i++) {
+                    const factor = msg[i];
+                    if (factor !== 0) {
+                        for (let j = 0; j < gen.length; j++) {
+                            msg[i + j] ^= gfMul(gen[j], factor);
                         }
                     }
-                    if (this.onMessage) {
-                        this.onMessage(envelope, conn);
+                }
+                return msg.slice(dataBytes.length);
+            }
+
+            // Versão 4-L: 33x33 módulos, capacidade total de dados = 80 bytes, 20 bytes de ECC
+            function encodeVersion4L(text) {
+                const utf8 = new TextEncoder().encode(text);
+                const maxPayloadBytes = 80;
+                const trimmedBytes = utf8.slice(0, maxPayloadBytes - 2);
+
+                const bits = [];
+                function pushBits(val, len) {
+                    for (let i = len - 1; i >= 0; i--) {
+                        bits.push((val >>> i) & 1);
                     }
                 }
 
-                cleanup() {
-                    this.role = null;
-                    this.activePin = null;
-                    this.onMessage = null;
-                    this.hostConnections = {};
-                    if (this.playerConn) {
-                        try { this.playerConn.close(); } catch (e) {}
-                        this.playerConn = null;
-                    }
-                    if (this.peer) {
-                        try { this.peer.destroy(); } catch (e) {}
-                        this.peer = null;
-                    }
-                    this.setStatus("ready", "Pronto");
+                // Byte mode indicator = 0100 (4 bits), character count indicator for V1-9 byte mode = 8 bits
+                pushBits(0b0100, 4);
+                pushBits(trimmedBytes.length, 8);
+                for (let i = 0; i < trimmedBytes.length; i++) {
+                    pushBits(trimmedBytes[i], 8);
                 }
 
-                startHost(pin, onMessage) {
-                    this.cleanup();
-                    this.role = "host";
-                    this.activePin = String(pin);
-                    this.onMessage = onMessage;
-                    this.setStatus("pending", "Iniciando P2P...");
+                const totalDataBits = maxPayloadBytes * 8;
+                const terminatorLen = Math.min(4, totalDataBits - bits.length);
+                pushBits(0, terminatorLen);
 
-                    const hintEl = document.getElementById("host-p2p-hint");
-                    if (hintEl) {
-                        hintEl.textContent = "Sala criada! Compartilhe o PIN ou QR Code com os participantes.";
-                    }
-
-                    if (typeof Peer === "undefined") {
-                        this.setStatus("local", "Modo Local");
-                        if (hintEl) hintEl.textContent = "Modo local ativo nesta sessão.";
-                        return;
-                    }
-
-                    try {
-                        const peerId = pinToPeerId(pin);
-                        this.peer = new Peer(peerId, {
-                            debug: 0,
-                            config: {
-                                iceServers: [
-                                    { urls: "stun:stun.l.google.com:19302" },
-                                    { urls: "stun:stun1.l.google.com:19302" },
-                                    { urls: "stun:global.stun.twilio.com:3478" }
-                                ]
-                            }
-                        });
-
-                        this.peer.on("open", () => {
-                            this.setStatus("online", "Online (P2P Pronto)");
-                            if (hintEl) {
-                                hintEl.textContent = "Conexão P2P ativa! Colegas podem entrar usando o PIN de 6 dígitos.";
-                            }
-                        });
-
-                        this.peer.on("connection", (conn) => {
-                            this.hostConnections[conn.peer] = conn;
-                            conn.on("data", (data) => {
-                                this._dispatch(data, conn);
-                            });
-                            conn.on("close", () => {
-                                delete this.hostConnections[conn.peer];
-                            });
-                            conn.on("error", () => {
-                                delete this.hostConnections[conn.peer];
-                            });
-                        });
-
-                        this.peer.on("error", () => {
-                            this.setStatus("local", "P2P Restrito / Local");
-                            if (hintEl) {
-                                hintEl.textContent = "Rede com restrição P2P externa; conexões locais no navegador permanecem ativas.";
-                            }
-                        });
-                    } catch (e) {
-                        this.setStatus("local", "Modo Local");
-                    }
+                while (bits.length % 8 !== 0) {
+                    bits.push(0);
                 }
 
-                broadcastFromHost(payload) {
-                    if (!this.activePin) return;
-                    const envelope = {
-                        ...payload,
-                        _pin: String(this.activePin),
-                        _id: "msg_" + Math.random().toString(36).substring(2, 10) + "_" + Date.now()
-                    };
-                    this.seenIds.add(envelope._id);
-
-                    if (this.bc) {
-                        try { this.bc.postMessage(envelope); } catch (e) {}
+                const dataCodewords = [];
+                for (let i = 0; i < bits.length; i += 8) {
+                    let byte = 0;
+                    for (let b = 0; b < 8; b++) {
+                        byte = (byte << 1) | bits[i + b];
                     }
-                    this._writeStorageBus(this.activePin, envelope);
-
-                    Object.values(this.hostConnections).forEach((conn) => {
-                        try {
-                            if (conn && conn.open) {
-                                conn.send(envelope);
-                            }
-                        } catch (e) {}
-                    });
+                    dataCodewords.push(byte);
                 }
 
-                joinAsPlayer(pin, payload, onMessage, onTimeoutOrFail) {
-                    this.cleanup();
-                    this.role = "player";
-                    this.activePin = String(pin);
-                    this.onMessage = onMessage;
-                    this.setStatus("pending", "Conectando PIN...");
+                const padBytes = [0xec, 0x11];
+                let pIdx = 0;
+                while (dataCodewords.length < maxPayloadBytes) {
+                    dataCodewords.push(padBytes[pIdx % 2]);
+                    pIdx++;
+                }
 
-                    const envelope = {
-                        ...payload,
-                        _pin: String(pin),
-                        _id: "msg_" + Math.random().toString(36).substring(2, 10) + "_" + Date.now()
-                    };
-                    this.seenIds.add(envelope._id);
+                // Versão 4-L usa 1 bloco RS com 80 data codewords e 20 EC codewords
+                const ecCodewords = rsEncode(dataCodewords, 20);
+                const fullStream = dataCodewords.concat(ecCodewords);
 
-                    if (this.bc) {
-                        try { this.bc.postMessage(envelope); } catch (e) {}
+                const streamBits = [];
+                fullStream.forEach(cw => {
+                    for (let i = 7; i >= 0; i--) {
+                        streamBits.push((cw >>> i) & 1);
                     }
-                    this._writeStorageBus(pin, envelope);
+                });
 
-                    if (typeof Peer === "undefined") {
-                        this.setStatus("local", "Modo Local");
-                        if (onTimeoutOrFail) onTimeoutOrFail("P2P indisponível nesta rede; usando canal local.");
-                        return;
-                    }
+                const size = 33; // 4 * 4 + 17
+                const matrix = Array.from({ length: size }, () => new Array(size).fill(null));
+                const reserved = Array.from({ length: size }, () => new Array(size).fill(false));
 
-                    let settled = false;
-                    const timeoutHandle = setTimeout(() => {
-                        if (!settled && (!this.playerConn || !this.playerConn.open)) {
-                            this.setStatus("local", "Aguardando Host / Local");
-                            if (onTimeoutOrFail) {
-                                onTimeoutOrFail("Verifique o PIN com o apresentador. Se estiver no mesmo navegador, o modo local está ativo.");
-                            }
+                function setModule(r, c, val, isFunc) {
+                    if (r < 0 || r >= size || c < 0 || c >= size) return;
+                    matrix[r][c] = val ? 1 : 0;
+                    if (isFunc) reserved[r][c] = true;
+                }
+
+                function placeFinder(topR, leftC) {
+                    for (let r = -1; r <= 7; r++) {
+                        for (let c = -1; c <= 7; c++) {
+                            const rr = topR + r;
+                            const cc = leftC + c;
+                            if (rr < 0 || rr >= size || cc < 0 || cc >= size) continue;
+                            const inOuter = (r === 0 || r === 6 || c === 0 || c === 6) && r >= 0 && r <= 6 && c >= 0 && c <= 6;
+                            const inInner = r >= 2 && r <= 4 && c >= 2 && c <= 4;
+                            setModule(rr, cc, inOuter || inInner, true);
                         }
-                    }, 6000);
+                    }
+                }
 
-                    try {
-                        const clientPeerId = "lein-p-" + Math.random().toString(36).substring(2, 9) + "-" + Date.now().toString(36);
-                        this.peer = new Peer(clientPeerId, {
-                            debug: 0,
-                            config: {
-                                iceServers: [
-                                    { urls: "stun:stun.l.google.com:19302" },
-                                    { urls: "stun:stun1.l.google.com:19302" },
-                                    { urls: "stun:global.stun.twilio.com:3478" }
-                                ]
-                            }
-                        });
+                function placeAlignment(centerR, centerC) {
+                    for (let r = -2; r <= 2; r++) {
+                        for (let c = -2; c <= 2; c++) {
+                            const dist = Math.max(Math.abs(r), Math.abs(c));
+                            setModule(centerR + r, centerC + c, dist === 0 || dist === 2, true);
+                        }
+                    }
+                }
 
-                        this.peer.on("open", () => {
-                            const targetPeerId = pinToPeerId(pin);
-                            const conn = this.peer.connect(targetPeerId, { reliable: true });
-                            this.playerConn = conn;
+                placeFinder(0, 0);
+                placeFinder(0, size - 7);
+                placeFinder(size - 7, 0);
+                placeAlignment(26, 26);
 
-                            conn.on("open", () => {
-                                settled = true;
-                                clearTimeout(timeoutHandle);
-                                this.setStatus("online", "Online (P2P)");
-                                try { conn.send(envelope); } catch (e) {}
-                            });
+                // Timing patterns
+                for (let i = 8; i < size - 8; i++) {
+                    const bit = i % 2 === 0 ? 1 : 0;
+                    setModule(6, i, bit, true);
+                    setModule(i, 6, bit, true);
+                }
 
-                            conn.on("data", (data) => {
-                                this._dispatch(data, conn);
-                            });
+                // Dark module
+                setModule(size - 8, 8, 1, true);
 
-                            conn.on("close", () => {
-                                this.setStatus("pending", "Desconectado");
-                            });
+                // Reserve format info cells
+                for (let i = 0; i < 9; i++) {
+                    if (i !== 6) {
+                        reserved[8][i] = true;
+                        reserved[i][8] = true;
+                    }
+                }
+                for (let i = 0; i < 8; i++) {
+                    reserved[8][size - 1 - i] = true;
+                    reserved[size - 1 - i][8] = true;
+                }
 
-                            conn.on("error", () => {});
-                        });
-
-                        this.peer.on("error", () => {
-                            if (!settled) {
-                                settled = true;
-                                clearTimeout(timeoutHandle);
-                                this.setStatus("local", "Modo Local");
-                                if (onTimeoutOrFail) {
-                                    onTimeoutOrFail("Não foi possível alcançar o PIN via P2P (PIN inválido ou rede restrita).");
+                // Zig-zag data placement (mask 0: (r + c) % 2 === 0)
+                let bitIndex = 0;
+                let goingUp = true;
+                for (let col = size - 1; col >= 1; col -= 2) {
+                    if (col === 6) col = 5;
+                    for (let step = 0; step < size; step++) {
+                        const r = goingUp ? (size - 1 - step) : step;
+                        for (let offset = 0; offset < 2; offset++) {
+                            const c = col - offset;
+                            if (!reserved[r][c]) {
+                                let bit = bitIndex < streamBits.length ? streamBits[bitIndex++] : 0;
+                                if ((r + c) % 2 === 0) {
+                                    bit ^= 1;
                                 }
-                            }
-                        });
-                    } catch (e) {
-                        clearTimeout(timeoutHandle);
-                        this.setStatus("local", "Modo Local");
-                    }
-                }
-
-                sendToHost(payload) {
-                    if (!this.activePin) return;
-                    const envelope = {
-                        ...payload,
-                        _pin: String(this.activePin),
-                        _id: "msg_" + Math.random().toString(36).substring(2, 10) + "_" + Date.now()
-                    };
-                    this.seenIds.add(envelope._id);
-
-                    if (this.bc) {
-                        try { this.bc.postMessage(envelope); } catch (e) {}
-                    }
-                    this._writeStorageBus(this.activePin, envelope);
-
-                    if (this.playerConn && this.playerConn.open) {
-                        try {
-                            this.playerConn.send(envelope);
-                        } catch (e) {}
-                    }
-                }
-            }
-
-            const mpManager = new PeerMultiplayerManager();
-
-            // =========================================================================
-            // 3. GERADOR LOCAL DE QR CODE (CANVAS)
-            // =========================================================================
-            function renderSimpleQRCode(container, text, size = 96) {
-                if (!container) return;
-                container.innerHTML = "";
-
-                const modules = 21;
-                const cell = Math.floor(size / modules);
-                const actualSize = cell * modules;
-
-                const canvas = document.createElement("canvas");
-                canvas.width = actualSize;
-                canvas.height = actualSize;
-                const ctx = canvas.getContext("2d");
-
-                ctx.fillStyle = "#ffffff";
-                ctx.fillRect(0, 0, actualSize, actualSize);
-                ctx.fillStyle = "#0f172a";
-
-                const drawFinder = (r, c) => {
-                    for (let dr = 0; dr < 7; dr++) {
-                        for (let dc = 0; dc < 7; dc++) {
-                            const isBorder = dr === 0 || dr === 6 || dc === 0 || dc === 6;
-                            const isCenter = dr >= 2 && dr <= 4 && dc >= 2 && dc <= 4;
-                            if (isBorder || isCenter) {
-                                ctx.fillRect((c + dc) * cell, (r + dr) * cell, cell, cell);
+                                matrix[r][c] = bit;
                             }
                         }
                     }
-                };
-
-                drawFinder(0, 0);
-                drawFinder(0, modules - 7);
-                drawFinder(modules - 7, 0);
-
-                let hash = 2166136261;
-                for (let i = 0; i < text.length; i++) {
-                    hash ^= text.charCodeAt(i);
-                    hash = Math.imul(hash, 16777619);
+                    goingUp = !goingUp;
                 }
 
-                for (let r = 0; r < modules; r++) {
-                    for (let c = 0; c < modules; c++) {
-                        const inTopLeft = r < 8 && c < 8;
-                        const inTopRight = r < 8 && c >= modules - 8;
-                        const inBottomLeft = r >= modules - 8 && c < 8;
-                        if (inTopLeft || inTopRight || inBottomLeft) continue;
+                // Format info for ECC Level L (01) and Mask 0 (000) -> 01000 -> BCH (1335) -> 0x77c0 xor 0x5412 = 0x23d2
+                // 15-bit format sequence for L + Mask 0: 111011111000100
+                const formatBits = [1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0];
+                const topLeftCoords = [
+                    [8, 0], [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 7], [8, 8],
+                    [7, 8], [5, 8], [4, 8], [3, 8], [2, 8], [1, 8], [0, 8]
+                ];
+                for (let i = 0; i < 15; i++) {
+                    const [r, c] = topLeftCoords[i];
+                    matrix[r][c] = formatBits[i];
+                }
+                for (let i = 0; i < 8; i++) {
+                    matrix[size - 1 - i][8] = formatBits[i];
+                }
+                for (let i = 0; i < 7; i++) {
+                    matrix[8][size - 7 + i] = formatBits[8 + i];
+                }
 
-                        const charCode = text.charCodeAt((r * modules + c) % text.length);
-                        const bit = ((r * 31 + c * 17 + charCode + (hash >>> ((r + c) % 24))) & 1) === 1;
-                        if (bit) {
-                            ctx.fillRect(c * cell, r * cell, cell, cell);
+                return matrix;
+            }
+
+            function renderToCanvas(canvas, text) {
+                if (!canvas) return;
+                const matrix = encodeVersion4L(text);
+                const n = matrix.length;
+                const quiet = 2;
+                const total = n + quiet * 2;
+                const cell = Math.max(3, Math.floor(canvas.width / total));
+                const drawSize = cell * total;
+                canvas.width = drawSize;
+                canvas.height = drawSize;
+
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, drawSize, drawSize);
+                ctx.fillStyle = '#0f172a';
+
+                for (let r = 0; r < n; r++) {
+                    for (let c = 0; c < n; c++) {
+                        if (matrix[r][c] === 1) {
+                            ctx.fillRect((c + quiet) * cell, (r + quiet) * cell, cell, cell);
                         }
                     }
                 }
-
-                container.appendChild(canvas);
             }
 
-            // =========================================================================
-            // 4. EFEITOS SONOROS (WEB AUDIO API)
-            // =========================================================================
-            let soundEnabled = true;
-            let audioCtx = null;
+            return { renderToCanvas };
+        })();
 
-            function getAudioContext() {
-                if (!audioCtx) {
-                    const Ctx = window.AudioContext || window.webkitAudioContext;
-                    if (Ctx) audioCtx = new Ctx();
-                }
-                if (audioCtx && audioCtx.state === "suspended") {
-                    audioCtx.resume().catch(() => {});
-                }
-                return audioCtx;
-            }
+        // =========================================================================
+        // 3. CAMADA MULTIPLAYER: PEERJS (WEBRTC P2P) + BROADCAST + LOCALSTORAGE
+        // =========================================================================
+        function pinToPeerId(pin) {
+            return `leininger-quiz-${String(pin).trim()}`;
+        }
 
-            function playTone(freq, type = "sine", duration = 0.15, vol = 0.12, delay = 0) {
-                if (!soundEnabled) return;
+        class PeerMultiplayerManager {
+            constructor() {
+                this.peer = null;
+                this.hostConnections = {};
+                this.playerConn = null;
+                this.onMessage = null;
+                this.activePin = null;
+                this.role = null;
+                this.bc = null;
+                this.storagePollTimer = null;
+                this.lastStorageTimestamp = Date.now();
+                this.seenIds = new Set();
+
                 try {
-                    const ctx = getAudioContext();
-                    if (!ctx) return;
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = type;
-                    osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
-                    gain.gain.setValueAtTime(vol, ctx.currentTime + delay);
-                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start(ctx.currentTime + delay);
-                    osc.stop(ctx.currentTime + delay + duration);
+                    this.bc = new BroadcastChannel('leininger_peer_fallback_v1');
+                    this.bc.onmessage = (ev) => {
+                        if (ev.data) this._dispatch(ev.data, null);
+                    };
+                } catch (e) {}
+
+                this._startStoragePolling();
+            }
+
+            setStatus(state, text) {
+                const dot = document.getElementById('net-status-dot');
+                const label = document.getElementById('net-status-label');
+                if (!dot || !label) return;
+                label.textContent = text;
+                if (state === 'online') {
+                    dot.className = "w-2 h-2 rounded-full bg-emerald-400";
+                } else if (state === 'pending') {
+                    dot.className = "w-2 h-2 rounded-full bg-amber-400 animate-pulse";
+                } else {
+                    dot.className = "w-2 h-2 rounded-full bg-sky-400";
+                }
+            }
+
+            _startStoragePolling() {
+                clearInterval(this.storagePollTimer);
+                this.storagePollTimer = setInterval(() => {
+                    if (!this.activePin) return;
+                    try {
+                        const key = `lein_bus_${this.activePin}`;
+                        const raw = localStorage.getItem(key);
+                        if (!raw) return;
+                        const item = JSON.parse(raw);
+                        if (item && item.envelope && item.ts > this.lastStorageTimestamp) {
+                            this.lastStorageTimestamp = item.ts;
+                            this._dispatch(item.envelope, null);
+                        }
+                    } catch (e) {}
+                }, 350);
+            }
+
+            _writeStorageBus(pin, envelope) {
+                try {
+                    const ts = Date.now() + Math.random();
+                    this.lastStorageTimestamp = ts;
+                    localStorage.setItem(`lein_bus_${pin}`, JSON.stringify({ ts, envelope }));
                 } catch (e) {}
             }
 
-            const SFX = {
-                click: () => playTone(520, "triangle", 0.08, 0.1),
-                tick: () => playTone(880, "sine", 0.07, 0.08),
-                urgentTick: () => playTone(1100, "square", 0.09, 0.1),
-                correct: () => {
-                    playTone(523.25, "triangle", 0.15, 0.15, 0);
-                    playTone(659.25, "triangle", 0.15, 0.15, 0.1);
-                    playTone(783.99, "triangle", 0.25, 0.18, 0.2);
-                    playTone(1046.50, "triangle", 0.35, 0.2, 0.32);
-                },
-                wrong: () => {
-                    playTone(300, "sawtooth", 0.2, 0.14, 0);
-                    playTone(220, "sawtooth", 0.35, 0.14, 0.18);
-                },
-                podium: () => {
-                    const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50];
-                    notes.forEach((n, i) => playTone(n, "triangle", 0.22, 0.16, i * 0.14));
+            _dispatch(envelope, conn) {
+                if (!envelope || !envelope._pin) return;
+                if (this.activePin && String(envelope._pin) !== String(this.activePin)) return;
+                if (envelope._id) {
+                    if (this.seenIds.has(envelope._id)) return;
+                    this.seenIds.add(envelope._id);
+                    if (this.seenIds.size > 500) {
+                        const first = this.seenIds.values().next().value;
+                        this.seenIds.delete(first);
+                    }
                 }
-            };
-
-            function toggleSound() {
-                soundEnabled = !soundEnabled;
-                const icon = document.getElementById("sound-icon");
-                if (icon) {
-                    icon.className = soundEnabled ? "fa-solid fa-volume-high" : "fa-solid fa-volume-xmark text-rose-400";
+                if (this.onMessage) {
+                    this.onMessage(envelope, conn);
                 }
-                showToast(soundEnabled ? "Som ativado" : "Som silenciado", "info");
             }
 
-            // =========================================================================
-            // 5. ESTADO DO JOGO & FUNÇÕES DE CONTROLE
-            // =========================================================================
-            const AVATARS = ["🩺", "💉", "🧬", "🏥", "❤️‍🩹", "🌿", "🌍", "🧠", "👩‍⚕️", "👨‍⚕️", "🔬", "✨"];
+            cleanup() {
+                this.role = null;
+                this.activePin = null;
+                this.onMessage = null;
+                this.hostConnections = {};
+                if (this.playerConn) {
+                    try { this.playerConn.close(); } catch (e) {}
+                    this.playerConn = null;
+                }
+                if (this.peer) {
+                    try { this.peer.destroy(); } catch (e) {}
+                    this.peer = null;
+                }
+                this.setStatus('ready', 'Pronto');
+            }
 
-            let gameState = {
+            startHost(pin, onMessage) {
+                this.cleanup();
+                this.role = 'host';
+                this.activePin = String(pin);
+                this.onMessage = onMessage;
+                this.setStatus('pending', 'Iniciando P2P...');
+
+                const hintEl = document.getElementById('host-p2p-hint');
+                if (hintEl) {
+                    hintEl.textContent = "Sala criada! O QR Code aponta diretamente para https://malulluna.github.io/quizleininger/?pin=" + pin;
+                }
+
+                if (typeof Peer === 'undefined') {
+                    this.setStatus('local', 'Modo Local');
+                    return;
+                }
+
+                try {
+                    const peerId = pinToPeerId(pin);
+                    this.peer = new Peer(peerId, {
+                        debug: 0,
+                        config: {
+                            iceServers: [
+                                { urls: 'stun:stun.l.google.com:19302' },
+                                { urls: 'stun:stun1.l.google.com:19302' },
+                                { urls: 'stun:global.stun.twilio.com:3478' }
+                            ]
+                        }
+                    });
+
+                    this.peer.on('open', () => {
+                        this.setStatus('online', 'Online (P2P Pronto)');
+                        if (hintEl) {
+                            hintEl.textContent = "Conexão P2P ativa! Colegas que escanearem o QR Code entram direto com o PIN.";
+                        }
+                    });
+
+                    this.peer.on('connection', (conn) => {
+                        this.hostConnections[conn.peer] = conn;
+                        conn.on('data', (data) => this._dispatch(data, conn));
+                        conn.on('close', () => { delete this.hostConnections[conn.peer]; });
+                        conn.on('error', () => { delete this.hostConnections[conn.peer]; });
+                    });
+
+                    this.peer.on('error', () => {
+                        this.setStatus('local', 'P2P Restrito / Local');
+                    });
+                } catch (e) {
+                    this.setStatus('local', 'Modo Local');
+                }
+            }
+
+            broadcastFromHost(payload) {
+                if (!this.activePin) return;
+                const envelope = {
+                    ...payload,
+                    _pin: String(this.activePin),
+                    _id: 'msg_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now()
+                };
+                this.seenIds.add(envelope._id);
+
+                if (this.bc) {
+                    try { this.bc.postMessage(envelope); } catch (e) {}
+                }
+                this._writeStorageBus(this.activePin, envelope);
+
+                Object.values(this.hostConnections).forEach((conn) => {
+                    try {
+                        if (conn && conn.open) conn.send(envelope);
+                    } catch (e) {}
+                });
+            }
+
+            joinAsPlayer(pin, payload, onMessage, onTimeoutOrFail) {
+                this.cleanup();
+                this.role = 'player';
+                this.activePin = String(pin);
+                this.onMessage = onMessage;
+                this.setStatus('pending', 'Conectando PIN...');
+
+                const envelope = {
+                    ...payload,
+                    _pin: String(pin),
+                    _id: 'msg_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now()
+                };
+                this.seenIds.add(envelope._id);
+
+                if (this.bc) {
+                    try { this.bc.postMessage(envelope); } catch (e) {}
+                }
+                this._writeStorageBus(pin, envelope);
+
+                if (typeof Peer === 'undefined') {
+                    this.setStatus('local', 'Modo Local');
+                    if (onTimeoutOrFail) onTimeoutOrFail("P2P indisponível; usando canal local.");
+                    return;
+                }
+
+                let settled = false;
+                const timeoutHandle = setTimeout(() => {
+                    if (!settled && (!this.playerConn || !this.playerConn.open)) {
+                        this.setStatus('local', 'Aguardando Host / Local');
+                        if (onTimeoutOrFail) {
+                            onTimeoutOrFail("Aguardando conexão P2P com o Host. Se estiver no mesmo navegador, a conexão local já está ativa.");
+                        }
+                    }
+                }, 6000);
+
+                try {
+                    const clientPeerId = 'lein-p-' + Math.random().toString(36).substring(2, 9) + '-' + Date.now().toString(36);
+                    this.peer = new Peer(clientPeerId, {
+                        debug: 0,
+                        config: {
+                            iceServers: [
+                                { urls: 'stun:stun.l.google.com:19302' },
+                                { urls: 'stun:stun1.l.google.com:19302' },
+                                { urls: 'stun:global.stun.twilio.com:3478' }
+                            ]
+                        }
+                    });
+
+                    this.peer.on('open', () => {
+                        const targetPeerId = pinToPeerId(pin);
+                        const conn = this.peer.connect(targetPeerId, { reliable: true });
+                        this.playerConn = conn;
+
+                        conn.on('open', () => {
+                            settled = true;
+                            clearTimeout(timeoutHandle);
+                            this.setStatus('online', 'Online (P2P)');
+                            try { conn.send(envelope); } catch (e) {}
+                        });
+
+                        conn.on('data', (data) => this._dispatch(data, conn));
+                        conn.on('close', () => this.setStatus('pending', 'Desconectado'));
+                        conn.on('error', () => {});
+                    });
+
+                    this.peer.on('error', () => {
+                        if (!settled) {
+                            settled = true;
+                            clearTimeout(timeoutHandle);
+                            this.setStatus('local', 'Modo Local');
+                            if (onTimeoutOrFail) {
+                                onTimeoutOrFail("Conexão P2P externa limitada nesta rede; canal local ativo.");
+                            }
+                        }
+                    });
+                } catch (e) {
+                    clearTimeout(timeoutHandle);
+                    this.setStatus('local', 'Modo Local');
+                }
+            }
+
+            sendToHost(payload) {
+                if (!this.activePin) return;
+                const envelope = {
+                    ...payload,
+                    _pin: String(this.activePin),
+                    _id: 'msg_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now()
+                };
+                this.seenIds.add(envelope._id);
+
+                if (this.bc) {
+                    try { this.bc.postMessage(envelope); } catch (e) {}
+                }
+                this._writeStorageBus(this.activePin, envelope);
+
+                if (this.playerConn && this.playerConn.open) {
+                    try { this.playerConn.send(envelope); } catch (e) {}
+                }
+            }
+        }
+
+        const mpManager = new PeerMultiplayerManager();
+
+        // =========================================================================
+        // 4. EFEITOS SONOROS (WEB AUDIO API)
+        // =========================================================================
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playTone(freq, type = 'sine', duration = 0.15, vol = 0.12, delay = 0) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+                gain.gain.setValueAtTime(vol, ctx.currentTime + delay);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(ctx.currentTime + delay);
+                osc.stop(ctx.currentTime + delay + duration);
+            } catch (e) {}
+        }
+
+        const SFX = {
+            click: () => playTone(520, 'triangle', 0.08, 0.1),
+            tick: () => playTone(880, 'sine', 0.07, 0.08),
+            urgentTick: () => playTone(1100, 'square', 0.09, 0.1),
+            correct: () => {
+                playTone(523.25, 'triangle', 0.15, 0.15, 0);
+                playTone(659.25, 'triangle', 0.15, 0.15, 0.1);
+                playTone(783.99, 'triangle', 0.25, 0.18, 0.2);
+                playTone(1046.50, 'triangle', 0.35, 0.2, 0.32);
+            },
+            wrong: () => {
+                playTone(300, 'sawtooth', 0.2, 0.14, 0);
+                playTone(220, 'sawtooth', 0.35, 0.14, 0.18);
+            },
+            podium: () => {
+                const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50];
+                notes.forEach((n, i) => playTone(n, 'triangle', 0.22, 0.16, i * 0.14));
+            }
+        };
+
+        // =========================================================================
+        // 5. ESTADO GLOBAL DO JOGO
+        // =========================================================================
+        const AVATARS = ["🩺", "💉", "🧬", "🏥", "❤️‍🩹", "🌿", "🌍", "🧠", "👩‍⚕️", "👨‍⚕️", "🔬", "✨"];
+
+        let gameState = {
+            mode: null,
+            roomPin: null,
+            playerId: null,
+            playerName: '',
+            playerAvatar: '🩺',
+            score: 0,
+            correctCount: 0,
+            streak: 0,
+            questions: [],
+            currentQIndex: 0,
+            timePerQuestion: 20,
+            timeRemaining: 20,
+            timerInterval: null,
+            hostSyncInterval: null,
+            hasAnsweredCurrent: false,
+            selectedOption: null,
+            playersMap: {},
+            lastRenderedStatus: null,
+            lastRenderedQIndex: -1,
+            currentRoomStatus: 'lobby'
+        };
+
+        // =========================================================================
+        // 6. UTILITÁRIOS DE UI
+        // =========================================================================
+        function escapeHTML(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function switchView(viewId) {
+            const views = [
+                'view-home',
+                'view-host-lobby',
+                'view-player-wait',
+                'view-quiz-active',
+                'view-round-result',
+                'view-podium'
+            ];
+            views.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+            const target = document.getElementById(viewId);
+            if (target) target.classList.remove('hidden');
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const colors = {
+                info: 'bg-slate-900/95 border-indigo-400/50 text-white',
+                success: 'bg-emerald-950/95 border-emerald-400 text-emerald-200',
+                error: 'bg-rose-950/95 border-rose-400 text-rose-200'
+            };
+            toast.className = `px-4 py-3 rounded-2xl border shadow-xl backdrop-blur-md text-sm font-semibold flex items-center gap-3 animate-pop ${colors[type] || colors.info}`;
+            toast.innerHTML = `<i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation text-rose-400' : type === 'success' ? 'fa-circle-check text-emerald-400' : 'fa-circle-info text-indigo-400'}"></i><span>${escapeHTML(message)}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3600);
+        }
+
+        let modalCallback = null;
+        function openModal(title, message, onConfirm) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            modalCallback = onConfirm;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+            modalCallback = null;
+        }
+
+        function confirmReturnHome() {
+            if (!gameState.mode) return;
+            openModal(
+                "Sair da Partida?",
+                "Você voltará para a tela inicial e o progresso atual será encerrado.",
+                () => returnHome()
+            );
+        }
+
+        function returnHome() {
+            clearInterval(gameState.timerInterval);
+            clearInterval(gameState.hostSyncInterval);
+            mpManager.cleanup();
+            gameState = {
                 mode: null,
                 roomPin: null,
                 playerId: null,
-                playerName: "",
-                playerAvatar: "🩺",
+                playerName: '',
+                playerAvatar: '🩺',
                 score: 0,
                 correctCount: 0,
                 streak: 0,
@@ -1468,887 +1624,700 @@
                 playersMap: {},
                 lastRenderedStatus: null,
                 lastRenderedQIndex: -1,
-                currentRoomStatus: "lobby"
+                currentRoomStatus: 'lobby'
             };
+            const badge = document.getElementById('header-room-badge');
+            badge.classList.add('hidden');
+            badge.classList.remove('flex');
+            switchView('view-home');
+        }
 
-            let modalCallback = null;
+        function renderQuestionsPreview() {
+            const countEl = document.getElementById('bank-total-count');
+            if (countEl) countEl.textContent = String(QUESTIONS_DB.length);
 
-            function escapeHTML(str) {
-                return String(str)
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;");
+            const drawer = document.getElementById('questions-preview-drawer');
+            if (!drawer) return;
+            const sample = QUESTIONS_DB.slice(0, 25);
+            drawer.innerHTML = sample.map((item) => `
+                <div class="bg-slate-950/50 p-3 rounded-xl border border-white/5 text-xs sm:text-sm">
+                    <div class="font-bold text-white mb-1">${escapeHTML(item.q)}</div>
+                    <div class="text-emerald-400 font-semibold">
+                        <i class="fa-solid fa-check mr-1"></i> ${escapeHTML(item.options[item.correct])}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function copyRoomPin() {
+            if (!gameState.roomPin) return;
+            const temp = document.createElement('input');
+            temp.value = gameState.roomPin;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast(`PIN ${gameState.roomPin} copiado!`, "success");
+        }
+
+        function downloadSelfHTML() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "quiz_madeleine_leininger.html";
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast("Arquivo HTML baixado com sucesso!", "success");
+        }
+
+        // =========================================================================
+        // 7. MODO SOLO (25 PERGUNTAS SEM REPETIÇÃO DO BANCO DE 320)
+        // =========================================================================
+        function startSoloMode() {
+            SFX.click();
+            mpManager.cleanup();
+            gameState.mode = 'solo';
+            gameState.questions = pickNonRepeatingQuestions(25);
+            gameState.currentQIndex = 0;
+            gameState.score = 0;
+            gameState.correctCount = 0;
+            gameState.streak = 0;
+            gameState.timePerQuestion = 25;
+
+            renderQuestionScreen();
+        }
+
+        // =========================================================================
+        // 8. MODO HOST / APRESENTADOR
+        // =========================================================================
+        function startAsHost() {
+            SFX.click();
+            const pin = Math.floor(100000 + Math.random() * 900000).toString();
+            const count = parseInt(document.getElementById('host-count-select')?.value, 10) || 25;
+            const timeSec = parseInt(document.getElementById('host-time-select')?.value, 10) || 20;
+
+            gameState.mode = 'host';
+            gameState.roomPin = pin;
+            gameState.playersMap = {};
+            gameState.currentRoomStatus = 'lobby';
+            gameState.currentQIndex = 0;
+            gameState.questions = pickNonRepeatingQuestions(count);
+            gameState.timePerQuestion = timeSec;
+
+            document.getElementById('lobby-pin-display').textContent = pin;
+            document.getElementById('header-pin-text').textContent = pin;
+            document.getElementById('header-room-badge').classList.remove('hidden');
+            document.getElementById('header-room-badge').classList.add('flex');
+
+            const shareUrl = buildPinShareUrl(pin);
+            const qrLabel = document.getElementById('qr-target-url-label');
+            if (qrLabel) qrLabel.textContent = shareUrl;
+
+            const qrCanvas = document.getElementById('qrcode-canvas');
+            if (qrCanvas) {
+                qrCanvas.width = 140;
+                qrCanvas.height = 140;
+                QRCodeCanvasRenderer.renderToCanvas(qrCanvas, shareUrl);
             }
 
-            function switchView(viewId) {
-                const views = [
-                    "view-home",
-                    "view-host-lobby",
-                    "view-player-wait",
-                    "view-quiz-active",
-                    "view-round-result",
-                    "view-podium"
-                ];
-                views.forEach((id) => {
-                    const el = document.getElementById(id);
-                    if (el) el.classList.add("hidden");
-                });
-                const target = document.getElementById(viewId);
-                if (target) target.classList.remove("hidden");
+            switchView('view-host-lobby');
+            renderLobbyPlayers();
+
+            mpManager.startHost(pin, (msg) => {
+                if (!msg) return;
+                if (msg.type === 'PLAYER_JOIN' && msg.player) {
+                    const p = msg.player;
+                    if (!gameState.playersMap[p.id]) {
+                        gameState.playersMap[p.id] = p;
+                        showToast(`${p.avatar || '🩺'} ${p.name} entrou na sala!`, "success");
+                    } else {
+                        gameState.playersMap[p.id] = {
+                            ...gameState.playersMap[p.id],
+                            name: p.name,
+                            avatar: p.avatar
+                        };
+                    }
+                    renderLobbyPlayers();
+                    updateLiveAnswerCounter();
+                    broadcastHostState();
+                } else if (msg.type === 'PLAYER_ANSWER') {
+                    const p = gameState.playersMap[msg.playerId];
+                    if (p) {
+                        p.score = msg.score;
+                        p.correctCount = msg.correctCount;
+                        p.lastAnswer = msg.lastAnswer;
+                        p.lastQuestionIndex = msg.lastQuestionIndex;
+                        p.lastPoints = msg.lastPoints;
+                        updateLiveAnswerCounter();
+                    }
+                } else if (msg.type === 'REQUEST_STATE') {
+                    broadcastHostState();
+                }
+            });
+
+            broadcastHostState();
+            clearInterval(gameState.hostSyncInterval);
+            gameState.hostSyncInterval = setInterval(() => {
+                if (gameState.mode === 'host') {
+                    broadcastHostState();
+                }
+            }, 2500);
+        }
+
+        function broadcastHostState() {
+            if (gameState.mode !== 'host' || !gameState.roomPin) return;
+            const timeSec = parseInt(document.getElementById('host-time-select')?.value, 10) || 20;
+
+            if (gameState.currentRoomStatus === 'lobby') {
+                gameState.timePerQuestion = timeSec;
             }
 
-            function showToast(message, type = "info") {
-                const container = document.getElementById("toast-container");
-                if (!container) return;
-                const toast = document.createElement("div");
-                const colors = {
-                    info: "bg-slate-900/95 border-indigo-400/50 text-white",
-                    success: "bg-emerald-950/95 border-emerald-400 text-emerald-200",
-                    error: "bg-rose-950/95 border-rose-400 text-rose-200"
-                };
-                const iconClass = type === "error"
-                    ? "fa-circle-exclamation text-rose-400"
-                    : type === "success"
-                        ? "fa-circle-check text-emerald-400"
-                        : "fa-circle-info text-indigo-400";
+            mpManager.broadcastFromHost({
+                type: 'ROOM_STATE',
+                status: gameState.currentRoomStatus,
+                currentQIndex: gameState.currentQIndex,
+                questions: gameState.questions,
+                questionCount: gameState.questions.length,
+                timePerQuestion: gameState.timePerQuestion || timeSec,
+                players: Object.values(gameState.playersMap)
+            });
+        }
 
-                toast.className = `px-4 py-3 rounded-2xl border shadow-xl backdrop-blur-md text-sm font-semibold flex items-center gap-3 animate-pop ${colors[type] || colors.info}`;
-                toast.innerHTML = `<i class="fa-solid ${iconClass}"></i><span>${escapeHTML(message)}</span>`;
-                container.appendChild(toast);
-                setTimeout(() => {
-                    toast.style.opacity = "0";
-                    toast.style.transition = "opacity 0.3s ease";
-                    setTimeout(() => toast.remove(), 300);
-                }, 3600);
+        function renderLobbyPlayers() {
+            const grid = document.getElementById('lobby-players-grid');
+            const countSpan = document.getElementById('lobby-player-count');
+            const players = Object.values(gameState.playersMap);
+            countSpan.textContent = String(players.length);
+
+            if (players.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center text-slate-400 py-8 text-sm">
+                        <i class="fa-solid fa-users-viewfinder text-2xl mb-2 text-emerald-400"></i>
+                        <span>Aguardando participantes entrarem com o PIN <strong>${escapeHTML(gameState.roomPin)}</strong>...</span>
+                    </div>`;
+                return;
             }
 
-            function openModal(title, message, onConfirm) {
-                document.getElementById("modal-title").textContent = title;
-                document.getElementById("modal-message").textContent = message;
-                modalCallback = onConfirm;
-                document.getElementById("custom-modal").classList.remove("hidden");
+            grid.innerHTML = players.map(p => `
+                <div class="bg-slate-900/90 border border-emerald-400/30 rounded-2xl px-3.5 py-2.5 flex items-center gap-2.5 animate-pop shadow">
+                    <span class="text-2xl">${p.avatar || '🩺'}</span>
+                    <span class="font-bold text-sm truncate text-white">${escapeHTML(p.name)}</span>
+                </div>
+            `).join('');
+        }
+
+        function hostStartQuiz() {
+            SFX.click();
+            const count = parseInt(document.getElementById('host-count-select').value, 10) || 25;
+            const timeSec = parseInt(document.getElementById('host-time-select').value, 10) || 20;
+
+            gameState.questions = pickNonRepeatingQuestions(count);
+            gameState.timePerQuestion = timeSec;
+            gameState.currentQIndex = 0;
+            gameState.currentRoomStatus = 'question';
+
+            broadcastHostState();
+            renderQuestionScreen();
+        }
+
+        // =========================================================================
+        // 9. MODO JOGADOR
+        // =========================================================================
+        function joinMultiplayerRoom() {
+            SFX.click();
+            const pinInput = document.getElementById('input-join-pin').value.trim();
+            const nameInput = document.getElementById('input-join-name').value.trim();
+
+            if (!pinInput || pinInput.length < 4) {
+                showToast("Digite o PIN da sala!", "error");
+                return;
+            }
+            if (!nameInput) {
+                showToast("Digite seu nome ou apelido!", "error");
+                return;
             }
 
-            function closeModal() {
-                document.getElementById("custom-modal").classList.add("hidden");
-                modalCallback = null;
-            }
+            const pId = 'player_' + Math.random().toString(36).substring(2, 10) + '_' + Date.now().toString(36);
+            const avatar = AVATARS[Math.floor(Math.random() * AVATARS.length)];
 
-            function confirmReturnHome() {
-                if (!gameState.mode) return;
-                openModal(
-                    "Sair da Partida?",
-                    "Você voltará para a tela inicial e o progresso atual será encerrado.",
-                    () => returnHome()
-                );
-            }
+            gameState.mode = 'player';
+            gameState.roomPin = pinInput;
+            gameState.playerId = pId;
+            gameState.playerName = nameInput;
+            gameState.playerAvatar = avatar;
+            gameState.score = 0;
+            gameState.correctCount = 0;
+            gameState.streak = 0;
+            gameState.lastRenderedStatus = null;
+            gameState.lastRenderedQIndex = -1;
 
-            function returnHome() {
-                clearInterval(gameState.timerInterval);
-                clearInterval(gameState.hostSyncInterval);
-                mpManager.cleanup();
-                gameState = {
-                    mode: null,
-                    roomPin: null,
-                    playerId: null,
-                    playerName: "",
-                    playerAvatar: "🩺",
+            document.getElementById('header-pin-text').textContent = pinInput;
+            document.getElementById('header-room-badge').classList.remove('hidden');
+            document.getElementById('header-room-badge').classList.add('flex');
+
+            document.getElementById('player-avatar-badge').textContent = avatar;
+            document.getElementById('player-wait-name').textContent = nameInput;
+            document.getElementById('player-wait-desc').textContent = `Sala PIN ${pinInput}. Olhe para a tela do apresentador!`;
+            switchView('view-player-wait');
+
+            const joinPayload = {
+                type: 'PLAYER_JOIN',
+                player: {
+                    id: pId,
+                    name: nameInput,
+                    avatar: avatar,
                     score: 0,
                     correctCount: 0,
-                    streak: 0,
-                    questions: [],
-                    currentQIndex: 0,
-                    timePerQuestion: 20,
-                    timeRemaining: 20,
-                    timerInterval: null,
-                    hostSyncInterval: null,
-                    hasAnsweredCurrent: false,
-                    selectedOption: null,
-                    playersMap: {},
-                    lastRenderedStatus: null,
-                    lastRenderedQIndex: -1,
-                    currentRoomStatus: "lobby"
-                };
-                const badge = document.getElementById("header-room-badge");
-                if (badge) {
-                    badge.classList.add("hidden");
-                    badge.classList.remove("flex");
+                    lastAnswer: null,
+                    lastQuestionIndex: -1,
+                    lastPoints: 0
                 }
-                updateBankCounterUI();
-                switchView("view-home");
-            }
+            };
 
-            function renderQuestionsPreview() {
-                const drawer = document.getElementById("questions-preview-drawer");
-                if (!drawer) return;
-                const sample = QUESTION_BANK.slice(0, 25);
-                drawer.innerHTML = sample.map((item, idx) => `
-                    <div class="bg-slate-950/50 p-3 rounded-xl border border-white/5 text-xs sm:text-sm">
-                        <div class="font-bold text-white mb-1">${idx + 1}. ${escapeHTML(item.q)} <span class="text-xs text-indigo-300 font-normal">[${escapeHTML(item.category)}]</span></div>
-                        <div class="text-emerald-400 font-semibold">
-                            <i class="fa-solid fa-check mr-1"></i> ${escapeHTML(item.options[item.correct])}
-                        </div>
-                    </div>
-                `).join("");
-            }
-
-            function toggleQuestionPreview() {
-                SFX.click();
-                const drawer = document.getElementById("questions-preview-drawer");
-                if (drawer) drawer.classList.toggle("hidden");
-            }
-
-            function copyRoomPin() {
-                if (!gameState.roomPin) return;
-                const temp = document.createElement("input");
-                temp.value = gameState.roomPin;
-                document.body.appendChild(temp);
-                temp.select();
-                try { document.execCommand("copy"); } catch (e) {}
-                document.body.removeChild(temp);
-                showToast(`PIN ${gameState.roomPin} copiado!`, "success");
-            }
-
-            function downloadSelfHTML() {
-                const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-                const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = "Quiz_Madeleine_Leininger.html";
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                showToast("Arquivo HTML baixado com sucesso!", "success");
-            }
-
-            // =========================================================================
-            // 6. MODO SOLO (25 PERGUNTAS SORTEADAS SEM REPETIÇÃO)
-            // =========================================================================
-            function startSoloMode() {
-                SFX.click();
-                mpManager.cleanup();
-                gameState.mode = "solo";
-                gameState.questions = drawNonRepeatingQuestions(25);
-                gameState.currentQIndex = 0;
-                gameState.score = 0;
-                gameState.correctCount = 0;
-                gameState.streak = 0;
-                gameState.timePerQuestion = 25;
-
-                renderQuestionScreen();
-            }
-
-            // =========================================================================
-            // 7. MODO HOST / APRESENTADOR
-            // =========================================================================
-            function startAsHost() {
-                SFX.click();
-                const pin = Math.floor(100000 + Math.random() * 900000).toString();
-                const count = parseInt(document.getElementById("host-count-select")?.value, 10) || 25;
-                const timeSec = parseInt(document.getElementById("host-time-select")?.value, 10) || 20;
-
-                gameState.mode = "host";
-                gameState.roomPin = pin;
-                gameState.playersMap = {};
-                gameState.currentRoomStatus = "lobby";
-                gameState.currentQIndex = 0;
-                gameState.questions = drawNonRepeatingQuestions(count);
-                gameState.timePerQuestion = timeSec;
-
-                document.getElementById("lobby-pin-display").textContent = pin;
-                document.getElementById("header-pin-text").textContent = pin;
-                const badge = document.getElementById("header-room-badge");
-                badge.classList.remove("hidden");
-                badge.classList.add("flex");
-
-                const qrContainer = document.getElementById("qrcode-box");
-                const joinUrl = `${window.location.origin}${window.location.pathname}?pin=${pin}`;
-                renderSimpleQRCode(qrContainer, joinUrl, 96);
-
-                switchView("view-host-lobby");
-                renderLobbyPlayers();
-
-                mpManager.startHost(pin, (msg) => {
-                    if (!msg) return;
-                    if (msg.type === "PLAYER_JOIN" && msg.player) {
-                        const p = msg.player;
-                        if (!gameState.playersMap[p.id]) {
-                            gameState.playersMap[p.id] = p;
-                            showToast(`${p.avatar || "🩺"} ${p.name} entrou na sala!`, "success");
-                        } else {
-                            gameState.playersMap[p.id] = {
-                                ...gameState.playersMap[p.id],
-                                name: p.name,
-                                avatar: p.avatar
-                            };
+            mpManager.joinAsPlayer(
+                pinInput,
+                joinPayload,
+                (msg) => {
+                    if (msg && msg.type === 'ROOM_STATE') {
+                        if (Array.isArray(msg.questions) && msg.questions.length > 0) {
+                            gameState.questions = msg.questions;
                         }
-                        renderLobbyPlayers();
-                        updateLiveAnswerCounter();
-                        broadcastHostState();
-                    } else if (msg.type === "PLAYER_ANSWER") {
-                        const p = gameState.playersMap[msg.playerId];
-                        if (p) {
-                            p.score = msg.score;
-                            p.correctCount = msg.correctCount;
-                            p.lastAnswer = msg.lastAnswer;
-                            p.lastQuestionIndex = msg.lastQuestionIndex;
-                            p.lastPoints = msg.lastPoints;
-                            updateLiveAnswerCounter();
+                        if (Array.isArray(msg.players)) {
+                            const updatedMap = {};
+                            msg.players.forEach(pl => {
+                                updatedMap[pl.id] = pl;
+                            });
+                            gameState.playersMap = updatedMap;
                         }
-                    } else if (msg.type === "REQUEST_STATE") {
-                        broadcastHostState();
+                        handleRoomStateChangeForPlayer(msg);
                     }
-                });
-
-                broadcastHostState();
-                clearInterval(gameState.hostSyncInterval);
-                gameState.hostSyncInterval = setInterval(() => {
-                    if (gameState.mode === "host") {
-                        broadcastHostState();
-                    }
-                }, 2500);
-            }
-
-            function broadcastHostState() {
-                if (gameState.mode !== "host" || !gameState.roomPin) return;
-                const timeSec = parseInt(document.getElementById("host-time-select")?.value, 10) || 20;
-
-                if (gameState.currentRoomStatus === "lobby") {
-                    const count = parseInt(document.getElementById("host-count-select")?.value, 10) || 25;
-                    if (gameState.questions.length !== count) {
-                        gameState.questions = drawNonRepeatingQuestions(count);
-                    }
-                    gameState.timePerQuestion = timeSec;
+                },
+                (warnMsg) => {
+                    showToast(warnMsg, "info");
                 }
+            );
 
-                mpManager.broadcastFromHost({
-                    type: "ROOM_STATE",
-                    status: gameState.currentRoomStatus,
-                    currentQIndex: gameState.currentQIndex,
-                    questionCount: gameState.questions.length,
-                    timePerQuestion: gameState.timePerQuestion || timeSec,
-                    questionsData: gameState.questions,
-                    players: Object.values(gameState.playersMap)
-                });
-            }
+            showToast(`Entrando na sala ${pinInput}...`, "success");
+        }
 
-            function renderLobbyPlayers() {
-                const grid = document.getElementById("lobby-players-grid");
-                const countSpan = document.getElementById("lobby-player-count");
-                const players = Object.values(gameState.playersMap);
-                countSpan.textContent = players.length;
+        function handleRoomStateChangeForPlayer(roomData) {
+            const { status, currentQIndex, timePerQuestion } = roomData;
+            gameState.timePerQuestion = timePerQuestion || 20;
 
-                if (players.length === 0) {
-                    grid.innerHTML = `
-                        <div class="col-span-full flex flex-col items-center justify-center text-slate-400 py-8 text-sm">
-                            <i class="fa-solid fa-users-viewfinder text-2xl mb-2 text-emerald-400"></i>
-                            <span>Aguardando participantes entrarem com o PIN <strong>${escapeHTML(gameState.roomPin)}</strong>...</span>
-                        </div>`;
-                    return;
-                }
-
-                grid.innerHTML = players.map((p) => `
-                    <div class="bg-slate-900/90 border border-emerald-400/30 rounded-2xl px-3.5 py-2.5 flex items-center gap-2.5 animate-pop shadow">
-                        <span class="text-2xl">${p.avatar || "🩺"}</span>
-                        <span class="font-bold text-sm truncate text-white">${escapeHTML(p.name)}</span>
-                    </div>
-                `).join("");
-            }
-
-            function hostStartQuiz() {
-                SFX.click();
-                const count = parseInt(document.getElementById("host-count-select").value, 10) || 25;
-                const timeSec = parseInt(document.getElementById("host-time-select").value, 10) || 20;
-
-                if (!Array.isArray(gameState.questions) || gameState.questions.length !== count) {
-                    gameState.questions = drawNonRepeatingQuestions(count);
-                }
-                gameState.timePerQuestion = timeSec;
-                gameState.currentQIndex = 0;
-                gameState.currentRoomStatus = "question";
-
-                broadcastHostState();
-                renderQuestionScreen();
-            }
-
-            // =========================================================================
-            // 8. MODO JOGADOR
-            // =========================================================================
-            function joinMultiplayerRoom() {
-                SFX.click();
-                const pinInput = document.getElementById("input-join-pin").value.trim();
-                const nameInput = document.getElementById("input-join-name").value.trim();
-
-                if (!pinInput || pinInput.length < 4) {
-                    showToast("Digite o PIN da sala!", "error");
-                    return;
-                }
-                if (!nameInput) {
-                    showToast("Digite seu nome ou apelido!", "error");
-                    return;
-                }
-
-                const pId = "player_" + Math.random().toString(36).substring(2, 10) + "_" + Date.now().toString(36);
-                const avatar = AVATARS[Math.floor(Math.random() * AVATARS.length)];
-
-                gameState.mode = "player";
-                gameState.roomPin = pinInput;
-                gameState.playerId = pId;
-                gameState.playerName = nameInput;
-                gameState.playerAvatar = avatar;
-                gameState.score = 0;
-                gameState.correctCount = 0;
-                gameState.streak = 0;
-                gameState.lastRenderedStatus = null;
-                gameState.lastRenderedQIndex = -1;
-
-                document.getElementById("header-pin-text").textContent = pinInput;
-                const badge = document.getElementById("header-room-badge");
-                badge.classList.remove("hidden");
-                badge.classList.add("flex");
-
-                document.getElementById("player-avatar-badge").textContent = avatar;
-                document.getElementById("player-wait-name").textContent = nameInput;
-                document.getElementById("player-wait-desc").textContent = `Sala PIN ${pinInput}. Olhe para a tela do apresentador!`;
-                switchView("view-player-wait");
-
-                const joinPayload = {
-                    type: "PLAYER_JOIN",
-                    player: {
-                        id: pId,
-                        name: nameInput,
-                        avatar: avatar,
-                        score: 0,
-                        correctCount: 0,
-                        lastAnswer: null,
-                        lastQuestionIndex: -1,
-                        lastPoints: 0
-                    }
-                };
-
-                mpManager.joinAsPlayer(
-                    pinInput,
-                    joinPayload,
-                    (msg) => {
-                        if (msg && msg.type === "ROOM_STATE") {
-                            if (Array.isArray(msg.players)) {
-                                const updatedMap = {};
-                                msg.players.forEach((pl) => {
-                                    updatedMap[pl.id] = pl;
-                                });
-                                gameState.playersMap = updatedMap;
-                            }
-                            handleRoomStateChangeForPlayer(msg);
-                        }
-                    },
-                    (warnMsg) => {
-                        showToast(warnMsg, "info");
-                    }
-                );
-
-                showToast(`Entrando na sala ${pinInput}...`, "success");
-            }
-
-            function handleRoomStateChangeForPlayer(roomData) {
-                const { status, currentQIndex, questionCount, timePerQuestion, questionsData } = roomData;
-                if (Array.isArray(questionsData) && questionsData.length > 0) {
-                    gameState.questions = questionsData;
-                } else {
-                    gameState.questions = drawNonRepeatingQuestions(questionCount || 25);
-                }
-                gameState.timePerQuestion = timePerQuestion || 20;
-
-                if (status === "lobby") {
-                    switchView("view-player-wait");
-                } else if (status === "question") {
-                    if (gameState.lastRenderedStatus !== "question" || gameState.lastRenderedQIndex !== currentQIndex) {
-                        gameState.lastRenderedStatus = "question";
-                        gameState.lastRenderedQIndex = currentQIndex;
-                        gameState.currentQIndex = currentQIndex;
-                        renderQuestionScreen();
-                    }
-                } else if (status === "reveal") {
-                    if (gameState.lastRenderedStatus !== "reveal" || gameState.lastRenderedQIndex !== currentQIndex) {
-                        gameState.lastRenderedStatus = "reveal";
-                        gameState.lastRenderedQIndex = currentQIndex;
-                        gameState.currentQIndex = currentQIndex;
-                        showRoundResultScreen();
-                    }
-                } else if (status === "podium") {
-                    if (gameState.lastRenderedStatus !== "podium") {
-                        gameState.lastRenderedStatus = "podium";
-                        showFinalPodium();
-                    }
-                }
-            }
-
-            // =========================================================================
-            // 9. MECÂNICA DA PERGUNTA, TEMPORIZADOR E RESPOSTAS
-            // =========================================================================
-            function renderQuestionScreen() {
-                clearInterval(gameState.timerInterval);
-                gameState.hasAnsweredCurrent = false;
-                gameState.selectedOption = null;
-                gameState.timeRemaining = gameState.timePerQuestion;
-
-                const qObj = gameState.questions[gameState.currentQIndex];
-                if (!qObj) {
-                    showFinalPodium();
-                    return;
-                }
-
-                switchView("view-quiz-active");
-
-                document.getElementById("quiz-q-current").textContent = gameState.currentQIndex + 1;
-                document.getElementById("quiz-q-total").textContent = gameState.questions.length;
-                document.getElementById("quiz-category-tag").textContent = qObj.category;
-                document.getElementById("quiz-question-text").textContent = qObj.q;
-
-                qObj.options.forEach((optText, idx) => {
-                    const btn = document.getElementById(`opt-btn-${idx}`);
-                    const span = document.getElementById(`opt-text-${idx}`);
-                    if (span) span.textContent = optText;
-                    if (btn) {
-                        btn.disabled = (gameState.mode === "host");
-                        btn.classList.remove("ring-4", "ring-white", "opacity-40");
-                    }
-                });
-
-                document.getElementById("player-answered-banner").classList.add("hidden");
-
-                if (gameState.mode === "host") {
-                    document.getElementById("host-skip-timer-box").classList.remove("hidden");
-                    document.getElementById("quiz-status-label").textContent = "Respostas";
-                    updateLiveAnswerCounter();
-                } else {
-                    document.getElementById("host-skip-timer-box").classList.add("hidden");
-                    document.getElementById("quiz-status-label").textContent = "Seus Pontos";
-                    document.getElementById("quiz-status-value").textContent = gameState.score.toLocaleString("pt-BR");
-                }
-
-                const timerEl = document.getElementById("quiz-timer-circle");
-                timerEl.textContent = gameState.timeRemaining;
-                timerEl.classList.remove("timer-urgent");
-
-                gameState.timerInterval = setInterval(() => {
-                    gameState.timeRemaining--;
-                    timerEl.textContent = Math.max(0, gameState.timeRemaining);
-
-                    if (gameState.timeRemaining <= 5 && gameState.timeRemaining > 0) {
-                        timerEl.classList.add("timer-urgent");
-                        SFX.urgentTick();
-                    } else if (gameState.timeRemaining > 5) {
-                        SFX.tick();
-                    }
-
-                    if (gameState.timeRemaining <= 0) {
-                        clearInterval(gameState.timerInterval);
-                        if (gameState.mode === "host") {
-                            hostForceReveal();
-                        } else if (gameState.mode === "solo") {
-                            showRoundResultScreen(0);
-                        }
-                    }
-                }, 1000);
-            }
-
-            function updateLiveAnswerCounter() {
-                if (gameState.mode !== "host") return;
-                const players = Object.values(gameState.playersMap);
-                const answered = players.filter((p) => p.lastQuestionIndex === gameState.currentQIndex).length;
-                document.getElementById("quiz-status-value").textContent = `${answered} / ${players.length}`;
-
-                if (players.length > 0 && answered === players.length && gameState.timeRemaining > 1 && gameState.currentRoomStatus === "question") {
-                    clearInterval(gameState.timerInterval);
-                    setTimeout(() => {
-                        if (gameState.mode === "host" && gameState.currentRoomStatus === "question") {
-                            hostForceReveal();
-                        }
-                    }, 900);
-                }
-            }
-
-            function submitAnswer(optionIndex) {
-                if (gameState.mode === "host" || gameState.hasAnsweredCurrent) return;
-
-                SFX.click();
-                gameState.hasAnsweredCurrent = true;
-                gameState.selectedOption = optionIndex;
-
-                const qObj = gameState.questions[gameState.currentQIndex];
-                if (!qObj) return;
-                const isCorrect = optionIndex === qObj.correct;
-
-                for (let i = 0; i < 4; i++) {
-                    const btn = document.getElementById(`opt-btn-${i}`);
-                    if (!btn) continue;
-                    btn.disabled = true;
-                    if (i === optionIndex) {
-                        btn.classList.add("ring-4", "ring-white");
-                    } else {
-                        btn.classList.add("opacity-40");
-                    }
-                }
-
-                let earnedPoints = 0;
-                if (isCorrect) {
-                    const timeRatio = Math.max(0, gameState.timeRemaining / Math.max(1, gameState.timePerQuestion));
-                    const streakBonus = Math.min(gameState.streak * 50, 250);
-                    earnedPoints = Math.round(500 + (500 * timeRatio) + streakBonus);
-                    gameState.score += earnedPoints;
-                    gameState.correctCount++;
-                    gameState.streak++;
-                } else {
-                    gameState.streak = 0;
-                }
-
-                if (gameState.mode === "solo") {
-                    clearInterval(gameState.timerInterval);
-                    setTimeout(() => showRoundResultScreen(earnedPoints), 450);
-                } else if (gameState.mode === "player") {
-                    document.getElementById("player-answered-banner").classList.remove("hidden");
-                    document.getElementById("quiz-status-value").textContent = gameState.score.toLocaleString("pt-BR");
-
-                    const answerPayload = {
-                        type: "PLAYER_ANSWER",
-                        playerId: gameState.playerId,
-                        score: gameState.score,
-                        correctCount: gameState.correctCount,
-                        lastAnswer: optionIndex,
-                        lastQuestionIndex: gameState.currentQIndex,
-                        lastPoints: earnedPoints
-                    };
-
-                    if (gameState.playersMap[gameState.playerId]) {
-                        Object.assign(gameState.playersMap[gameState.playerId], answerPayload);
-                    }
-
-                    mpManager.sendToHost(answerPayload);
-                }
-            }
-
-            function hostForceReveal() {
-                clearInterval(gameState.timerInterval);
-                gameState.currentRoomStatus = "reveal";
-                broadcastHostState();
-                showRoundResultScreen();
-            }
-
-            // =========================================================================
-            // 10. RESULTADO DA RODADA & PÓDIO FINAL
-            // =========================================================================
-            function showRoundResultScreen(soloPoints = 0) {
-                clearInterval(gameState.timerInterval);
-                switchView("view-round-result");
-
-                const qObj = gameState.questions[gameState.currentQIndex];
-                if (!qObj) {
-                    showFinalPodium();
-                    return;
-                }
-
-                const iconBadge = document.getElementById("round-icon-badge");
-                const titleEl = document.getElementById("round-result-title");
-                const subEl = document.getElementById("round-result-subtitle");
-
-                document.getElementById("round-correct-text").textContent = qObj.options[qObj.correct];
-                document.getElementById("round-explanation-text").textContent = qObj.explanation;
-
-                if (gameState.mode === "host") {
-                    iconBadge.className = "w-16 h-16 rounded-2xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-3xl mx-auto mb-3";
-                    iconBadge.innerHTML = '<i class="fa-solid fa-chart-column"></i>';
-                    titleEl.textContent = "Tempo Esgotado!";
-                    subEl.textContent = `Questão ${gameState.currentQIndex + 1} de ${gameState.questions.length}`;
-                    subEl.className = "text-indigo-300 font-semibold text-sm sm:text-base";
-                    SFX.correct();
-                } else {
-                    const isCorrect = gameState.selectedOption === qObj.correct;
-                    const pts = gameState.mode === "solo"
-                        ? soloPoints
-                        : (gameState.playersMap[gameState.playerId]?.lastPoints || 0);
-
-                    if (isCorrect) {
-                        SFX.correct();
-                        iconBadge.className = "w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-3";
-                        iconBadge.innerHTML = '<i class="fa-solid fa-check"></i>';
-                        titleEl.textContent = "Resposta Correta! 🎉";
-                        subEl.textContent = `+${pts} pontos • Total: ${gameState.score.toLocaleString("pt-BR")} pts`;
-                        subEl.className = "text-emerald-300 font-bold text-sm sm:text-base";
-                    } else {
-                        SFX.wrong();
-                        iconBadge.className = "w-16 h-16 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mx-auto mb-3";
-                        iconBadge.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-                        titleEl.textContent = gameState.selectedOption === null ? "Tempo Esgotado! ⏰" : "Não foi dessa vez!";
-                        subEl.textContent = `Total acumulado: ${gameState.score.toLocaleString("pt-BR")} pts`;
-                        subEl.className = "text-rose-300 font-semibold text-sm sm:text-base";
-                    }
-                }
-
-                const counts = [0, 0, 0, 0];
-                if (gameState.mode === "solo") {
-                    if (gameState.selectedOption !== null && gameState.selectedOption >= 0 && gameState.selectedOption <= 3) {
-                        counts[gameState.selectedOption] = 1;
-                    }
-                } else {
-                    Object.values(gameState.playersMap).forEach((p) => {
-                        if (p.lastQuestionIndex === gameState.currentQIndex && p.lastAnswer !== null && p.lastAnswer >= 0 && p.lastAnswer <= 3) {
-                            counts[p.lastAnswer]++;
-                        }
-                    });
-                }
-
-                const maxCount = Math.max(...counts, 1);
-                for (let i = 0; i < 4; i++) {
-                    document.getElementById(`bar-count-${i}`).textContent = counts[i];
-                    const pct = Math.max(12, Math.round((counts[i] / maxCount) * 100));
-                    const barEl = document.getElementById(`bar-fill-${i}`);
-                    barEl.style.height = `${pct}%`;
-                    barEl.style.opacity = (i === qObj.correct) ? "1" : "0.45";
-                }
-
-                const lbBox = document.getElementById("round-leaderboard-box");
-                const lbList = document.getElementById("round-leaderboard-list");
-
-                if (gameState.mode === "solo") {
-                    lbBox.classList.add("hidden");
-                } else {
-                    lbBox.classList.remove("hidden");
-                    const sorted = Object.values(gameState.playersMap)
-                        .sort((a, b) => (b.score || 0) - (a.score || 0))
-                        .slice(0, 5);
-
-                    lbList.innerHTML = sorted.map((p, idx) => `
-                        <div class="flex items-center justify-between bg-slate-900/80 px-4 py-2.5 rounded-xl border ${p.id === gameState.playerId ? "border-emerald-400" : "border-white/5"}">
-                            <div class="flex items-center gap-3">
-                                <span class="font-display font-bold text-sm w-6 text-slate-400">#${idx + 1}</span>
-                                <span class="text-xl">${p.avatar || "🩺"}</span>
-                                <span class="font-bold text-sm">${escapeHTML(p.name)}</span>
-                            </div>
-                            <span class="font-display font-bold text-emerald-400 text-sm">${(p.score || 0).toLocaleString("pt-BR")} pts</span>
-                        </div>
-                    `).join("");
-                }
-
-                const nextBtn = document.getElementById("btn-next-question");
-                const waitMsg = document.getElementById("player-wait-next-msg");
-                const isLast = gameState.currentQIndex >= gameState.questions.length - 1;
-
-                if (gameState.mode === "player") {
-                    nextBtn.classList.add("hidden");
-                    waitMsg.classList.remove("hidden");
-                } else {
-                    nextBtn.classList.remove("hidden");
-                    waitMsg.classList.add("hidden");
-                    nextBtn.innerHTML = isLast
-                        ? `<span>Ver Pódio Final 🏆</span><i class="fa-solid fa-trophy"></i>`
-                        : `<span>Próxima Questão</span><i class="fa-solid fa-arrow-right"></i>`;
-                }
-            }
-
-            function advanceToNextQuestion() {
-                SFX.click();
-                if (gameState.currentQIndex + 1 >= gameState.questions.length) {
-                    if (gameState.mode === "host") {
-                        gameState.currentRoomStatus = "podium";
-                        broadcastHostState();
-                    }
-                    showFinalPodium();
-                } else {
-                    gameState.currentQIndex++;
-                    if (gameState.mode === "host") {
-                        gameState.currentRoomStatus = "question";
-                        broadcastHostState();
-                    }
+            if (status === 'lobby') {
+                switchView('view-player-wait');
+            } else if (status === 'question') {
+                if (gameState.lastRenderedStatus !== 'question' || gameState.lastRenderedQIndex !== currentQIndex) {
+                    gameState.lastRenderedStatus = 'question';
+                    gameState.lastRenderedQIndex = currentQIndex;
+                    gameState.currentQIndex = currentQIndex;
                     renderQuestionScreen();
                 }
-            }
-
-            function showFinalPodium() {
-                clearInterval(gameState.timerInterval);
-                switchView("view-podium");
-                SFX.podium();
-
-                try {
-                    if (typeof confetti === "function") {
-                        confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
-                    }
-                } catch (e) {}
-
-                let ranking = [];
-                if (gameState.mode === "solo") {
-                    ranking = [{
-                        id: "solo",
-                        name: "Você (Prática)",
-                        avatar: "🩺",
-                        score: gameState.score,
-                        correctCount: gameState.correctCount
-                    }];
-                } else {
-                    ranking = Object.values(gameState.playersMap)
-                        .sort((a, b) => (b.score || 0) - (a.score || 0));
+            } else if (status === 'reveal') {
+                if (gameState.lastRenderedStatus !== 'reveal' || gameState.lastRenderedQIndex !== currentQIndex) {
+                    gameState.lastRenderedStatus = 'reveal';
+                    gameState.lastRenderedQIndex = currentQIndex;
+                    gameState.currentQIndex = currentQIndex;
+                    showRoundResultScreen();
                 }
-
-                [1, 2, 3].forEach((pos) => {
-                    const p = ranking[pos - 1];
-                    const nameEl = document.getElementById(`podium-name-${pos}`);
-                    const scoreEl = document.getElementById(`podium-score-${pos}`);
-                    if (p) {
-                        nameEl.textContent = `${p.avatar || "🩺"} ${p.name}`;
-                        scoreEl.textContent = `${(p.score || 0).toLocaleString("pt-BR")} pts`;
-                    } else {
-                        nameEl.textContent = "---";
-                        scoreEl.textContent = "0 pts";
-                    }
-                });
-
-                const listEl = document.getElementById("final-ranking-list");
-                listEl.innerHTML = ranking.map((p, idx) => `
-                    <div class="flex items-center justify-between bg-slate-900/90 px-4 py-3 rounded-xl border ${idx === 0 ? "border-amber-400/60" : "border-white/5"}">
-                        <div class="flex items-center gap-3">
-                            <span class="font-display font-extrabold text-base w-7 ${idx === 0 ? "text-amber-400" : idx === 1 ? "text-slate-300" : idx === 2 ? "text-amber-600" : "text-slate-500"}">
-                                ${idx + 1}º
-                            </span>
-                            <span class="text-xl">${p.avatar || "🩺"}</span>
-                            <div>
-                                <div class="font-bold text-sm text-white">${escapeHTML(p.name)}</div>
-                                <div class="text-xs text-slate-400">${p.correctCount || 0} de ${gameState.questions.length} acertos</div>
-                            </div>
-                        </div>
-                        <span class="font-display font-extrabold text-emerald-400 text-base">
-                            ${(p.score || 0).toLocaleString("pt-BR")} pts
-                        </span>
-                    </div>
-                `).join("");
-            }
-
-            function playAgainSession() {
-                SFX.click();
-                if (gameState.mode === "solo") {
-                    startSoloMode();
-                } else if (gameState.mode === "host") {
-                    const count = parseInt(document.getElementById("host-count-select")?.value, 10) || 25;
-                    gameState.questions = drawNonRepeatingQuestions(count);
-                    gameState.currentQIndex = 0;
-                    Object.values(gameState.playersMap).forEach((p) => {
-                        p.score = 0;
-                        p.correctCount = 0;
-                        p.lastAnswer = null;
-                        p.lastQuestionIndex = -1;
-                        p.lastPoints = 0;
-                    });
-                    gameState.currentRoomStatus = "question";
-                    broadcastHostState();
-                    renderQuestionScreen();
-                } else {
-                    returnHome();
+            } else if (status === 'podium') {
+                if (gameState.lastRenderedStatus !== 'podium') {
+                    gameState.lastRenderedStatus = 'podium';
+                    showFinalPodium();
                 }
             }
+        }
 
-            // =========================================================================
-            // 11. REGISTRO CENTRAL DE EVENTOS (GARANTIDO APÓS DOM READY)
-            // =========================================================================
-            function bindAllEvents() {
-                const onClick = (id, handler) => {
-                    const el = document.getElementById(id);
-                    if (el) {
-                        el.addEventListener("click", (ev) => {
-                            ev.preventDefault();
-                            handler(ev);
-                        });
-                    }
-                };
+        // =========================================================================
+        // 10. MECÂNICA DA PERGUNTA, TEMPORIZADOR E RESPOSTAS
+        // =========================================================================
+        function renderQuestionScreen() {
+            clearInterval(gameState.timerInterval);
+            gameState.hasAnsweredCurrent = false;
+            gameState.selectedOption = null;
+            gameState.timeRemaining = gameState.timePerQuestion;
 
-                onClick("brand-home-btn", confirmReturnHome);
-                onClick("btn-sound-toggle", toggleSound);
-                onClick("btn-download-html", downloadSelfHTML);
-                onClick("modal-cancel-btn", closeModal);
-                onClick("modal-confirm-btn", () => {
-                    if (typeof modalCallback === "function") modalCallback();
-                    closeModal();
-                });
-
-                // Tela Inicial
-                onClick("btn-create-room", startAsHost);
-                onClick("btn-join-room", joinMultiplayerRoom);
-                onClick("btn-solo-mode", startSoloMode);
-                onClick("btn-reset-history", () => resetUsedQuestionHistory(true));
-                onClick("btn-toggle-preview", toggleQuestionPreview);
-
-                // Enter nos campos de PIN / Nome
-                ["input-join-pin", "input-join-name"].forEach((inputId) => {
-                    const inp = document.getElementById(inputId);
-                    if (inp) {
-                        inp.addEventListener("keydown", (ev) => {
-                            if (ev.key === "Enter") {
-                                ev.preventDefault();
-                                joinMultiplayerRoom();
-                            }
-                        });
-                    }
-                });
-
-                // Lobby Host
-                onClick("btn-copy-pin", copyRoomPin);
-                onClick("btn-host-cancel-room", confirmReturnHome);
-                onClick("btn-host-start-game", hostStartQuiz);
-
-                const timeSelect = document.getElementById("host-time-select");
-                if (timeSelect) {
-                    timeSelect.addEventListener("change", () => {
-                        gameState.timePerQuestion = parseInt(timeSelect.value, 10) || 20;
-                        broadcastHostState();
-                    });
-                }
-
-                const countSelect = document.getElementById("host-count-select");
-                if (countSelect) {
-                    countSelect.addEventListener("change", () => {
-                        if (gameState.mode === "host" && gameState.currentRoomStatus === "lobby") {
-                            const count = parseInt(countSelect.value, 10) || 25;
-                            gameState.questions = drawNonRepeatingQuestions(count);
-                            broadcastHostState();
-                        }
-                    });
-                }
-
-                // Botões A/B/C/D
-                for (let i = 0; i < 4; i++) {
-                    onClick(`opt-btn-${i}`, () => submitAnswer(i));
-                }
-
-                // Controles de Rodada e Pódio
-                onClick("btn-host-force-reveal", hostForceReveal);
-                onClick("btn-next-question", advanceToNextQuestion);
-                onClick("btn-play-again", playAgainSession);
-                onClick("btn-back-home", returnHome);
-
-                // Preenchimento automático se houver ?pin= na URL
-                const params = new URLSearchParams(window.location.search);
-                const urlPin = params.get("pin");
-                if (urlPin) {
-                    const pinField = document.getElementById("input-join-pin");
-                    const nameField = document.getElementById("input-join-name");
-                    if (pinField) pinField.value = urlPin;
-                    if (nameField) nameField.focus();
-                    showToast(`PIN ${urlPin} preenchido! Digite seu nome para entrar.`, "info");
-                }
+            const qObj = gameState.questions[gameState.currentQIndex];
+            if (!qObj) {
+                showFinalPodium();
+                return;
             }
 
-            if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", () => {
-                    updateBankCounterUI();
-                    renderQuestionsPreview();
-                    bindAllEvents();
-                });
+            switchView('view-quiz-active');
+
+            document.getElementById('quiz-q-current').textContent = String(gameState.currentQIndex + 1);
+            document.getElementById('quiz-q-total').textContent = String(gameState.questions.length);
+            document.getElementById('quiz-category-tag').textContent = qObj.category;
+            document.getElementById('quiz-question-text').textContent = qObj.q;
+
+            qObj.options.forEach((optText, idx) => {
+                const btn = document.getElementById(`opt-btn-${idx}`);
+                const span = document.getElementById(`opt-text-${idx}`);
+                span.textContent = optText;
+                btn.disabled = (gameState.mode === 'host');
+                btn.classList.remove('ring-4', 'ring-white', 'opacity-40');
+            });
+
+            document.getElementById('player-answered-banner').classList.add('hidden');
+
+            if (gameState.mode === 'host') {
+                document.getElementById('host-skip-timer-box').classList.remove('hidden');
+                document.getElementById('quiz-status-label').textContent = 'Respostas';
+                updateLiveAnswerCounter();
             } else {
-                updateBankCounterUI();
-                renderQuestionsPreview();
-                bindAllEvents();
+                document.getElementById('host-skip-timer-box').classList.add('hidden');
+                document.getElementById('quiz-status-label').textContent = 'Seus Pontos';
+                document.getElementById('quiz-status-value').textContent = gameState.score.toLocaleString('pt-BR');
             }
-        })();
+
+            const timerEl = document.getElementById('quiz-timer-circle');
+            timerEl.textContent = String(gameState.timeRemaining);
+            timerEl.classList.remove('timer-urgent');
+
+            gameState.timerInterval = setInterval(() => {
+                gameState.timeRemaining--;
+                timerEl.textContent = String(Math.max(0, gameState.timeRemaining));
+
+                if (gameState.timeRemaining <= 5 && gameState.timeRemaining > 0) {
+                    timerEl.classList.add('timer-urgent');
+                    SFX.urgentTick();
+                } else if (gameState.timeRemaining > 5) {
+                    SFX.tick();
+                }
+
+                if (gameState.timeRemaining <= 0) {
+                    clearInterval(gameState.timerInterval);
+                    if (gameState.mode === 'host') {
+                        hostForceReveal();
+                    } else if (gameState.mode === 'solo') {
+                        showRoundResultScreen(0);
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateLiveAnswerCounter() {
+            if (gameState.mode !== 'host') return;
+            const players = Object.values(gameState.playersMap);
+            const answered = players.filter(p => p.lastQuestionIndex === gameState.currentQIndex).length;
+            document.getElementById('quiz-status-value').textContent = `${answered} / ${players.length}`;
+
+            if (players.length > 0 && answered === players.length && gameState.timeRemaining > 1 && gameState.currentRoomStatus === 'question') {
+                clearInterval(gameState.timerInterval);
+                setTimeout(() => {
+                    if (gameState.mode === 'host' && gameState.currentRoomStatus === 'question') {
+                        hostForceReveal();
+                    }
+                }, 900);
+            }
+        }
+
+        function submitAnswer(optionIndex) {
+            if (gameState.mode === 'host' || gameState.hasAnsweredCurrent) return;
+
+            SFX.click();
+            gameState.hasAnsweredCurrent = true;
+            gameState.selectedOption = optionIndex;
+
+            const qObj = gameState.questions[gameState.currentQIndex];
+            const isCorrect = optionIndex === qObj.correct;
+
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`opt-btn-${i}`);
+                btn.disabled = true;
+                if (i === optionIndex) {
+                    btn.classList.add('ring-4', 'ring-white');
+                } else {
+                    btn.classList.add('opacity-40');
+                }
+            }
+
+            let earnedPoints = 0;
+            if (isCorrect) {
+                const timeRatio = Math.max(0, gameState.timeRemaining / gameState.timePerQuestion);
+                const streakBonus = Math.min(gameState.streak * 50, 250);
+                earnedPoints = Math.round(500 + (500 * timeRatio) + streakBonus);
+                gameState.score += earnedPoints;
+                gameState.correctCount++;
+                gameState.streak++;
+            } else {
+                gameState.streak = 0;
+            }
+
+            if (gameState.mode === 'solo') {
+                clearInterval(gameState.timerInterval);
+                setTimeout(() => showRoundResultScreen(earnedPoints), 400);
+            } else if (gameState.mode === 'player') {
+                document.getElementById('player-answered-banner').classList.remove('hidden');
+                document.getElementById('quiz-status-value').textContent = gameState.score.toLocaleString('pt-BR');
+
+                const answerPayload = {
+                    type: 'PLAYER_ANSWER',
+                    playerId: gameState.playerId,
+                    score: gameState.score,
+                    correctCount: gameState.correctCount,
+                    lastAnswer: optionIndex,
+                    lastQuestionIndex: gameState.currentQIndex,
+                    lastPoints: earnedPoints
+                };
+
+                if (gameState.playersMap[gameState.playerId]) {
+                    Object.assign(gameState.playersMap[gameState.playerId], answerPayload);
+                }
+
+                mpManager.sendToHost(answerPayload);
+            }
+        }
+
+        function hostForceReveal() {
+            clearInterval(gameState.timerInterval);
+            gameState.currentRoomStatus = 'reveal';
+            broadcastHostState();
+            showRoundResultScreen();
+        }
+
+        // =========================================================================
+        // 11. TELA DE RESULTADO DA RODADA & PLACAR PARCIAL
+        // =========================================================================
+        function showRoundResultScreen(soloPoints = 0) {
+            clearInterval(gameState.timerInterval);
+            switchView('view-round-result');
+
+            const qObj = gameState.questions[gameState.currentQIndex];
+            const iconBadge = document.getElementById('round-icon-badge');
+            const titleEl = document.getElementById('round-result-title');
+            const subEl = document.getElementById('round-result-subtitle');
+
+            document.getElementById('round-correct-text').textContent = qObj.options[qObj.correct];
+            document.getElementById('round-explanation-text').textContent = qObj.explanation;
+
+            if (gameState.mode === 'host') {
+                iconBadge.className = "w-16 h-16 rounded-2xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-3xl mx-auto mb-3";
+                iconBadge.innerHTML = '<i class="fa-solid fa-chart-column"></i>';
+                titleEl.textContent = "Tempo Esgotado!";
+                subEl.textContent = `Questão ${gameState.currentQIndex + 1} de ${gameState.questions.length}`;
+                subEl.className = "text-indigo-300 font-semibold text-sm sm:text-base";
+                SFX.correct();
+            } else {
+                const isCorrect = gameState.selectedOption === qObj.correct;
+                const pts = gameState.mode === 'solo'
+                    ? soloPoints
+                    : (gameState.playersMap[gameState.playerId]?.lastPoints || 0);
+
+                if (isCorrect) {
+                    SFX.correct();
+                    iconBadge.className = "w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto mb-3";
+                    iconBadge.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    titleEl.textContent = "Resposta Correta!";
+                    subEl.textContent = `+${pts} pontos • Total: ${gameState.score.toLocaleString('pt-BR')} pts`;
+                    subEl.className = "text-emerald-300 font-bold text-sm sm:text-base";
+                } else {
+                    SFX.wrong();
+                    iconBadge.className = "w-16 h-16 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mx-auto mb-3";
+                    iconBadge.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    titleEl.textContent = gameState.selectedOption === null ? "Tempo Esgotado!" : "Não foi dessa vez!";
+                    subEl.textContent = `Total acumulado: ${gameState.score.toLocaleString('pt-BR')} pts`;
+                    subEl.className = "text-rose-300 font-semibold text-sm sm:text-base";
+                }
+            }
+
+            const counts = [0, 0, 0, 0];
+            if (gameState.mode === 'solo') {
+                if (gameState.selectedOption !== null) counts[gameState.selectedOption] = 1;
+            } else {
+                Object.values(gameState.playersMap).forEach(p => {
+                    if (p.lastQuestionIndex === gameState.currentQIndex && p.lastAnswer !== null && p.lastAnswer >= 0 && p.lastAnswer <= 3) {
+                        counts[p.lastAnswer]++;
+                    }
+                });
+            }
+
+            const maxCount = Math.max(...counts, 1);
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`bar-count-${i}`).textContent = String(counts[i]);
+                const pct = Math.max(12, Math.round((counts[i] / maxCount) * 100));
+                const barEl = document.getElementById(`bar-fill-${i}`);
+                barEl.style.height = `${pct}%`;
+                barEl.style.opacity = (i === qObj.correct) ? '1' : '0.45';
+            }
+
+            const lbBox = document.getElementById('round-leaderboard-box');
+            const lbList = document.getElementById('round-leaderboard-list');
+
+            if (gameState.mode === 'solo') {
+                lbBox.classList.add('hidden');
+            } else {
+                lbBox.classList.remove('hidden');
+                const sorted = Object.values(gameState.playersMap)
+                    .sort((a, b) => (b.score || 0) - (a.score || 0))
+                    .slice(0, 5);
+
+                lbList.innerHTML = sorted.map((p, idx) => `
+                    <div class="flex items-center justify-between bg-slate-900/80 px-4 py-2.5 rounded-xl border ${p.id === gameState.playerId ? 'border-emerald-400' : 'border-white/5'}">
+                        <div class="flex items-center gap-3">
+                            <span class="font-display font-bold text-sm w-6 text-slate-400">#${idx + 1}</span>
+                            <span class="text-xl">${p.avatar || '🩺'}</span>
+                            <span class="font-bold text-sm">${escapeHTML(p.name)}</span>
+                        </div>
+                        <span class="font-display font-bold text-emerald-400 text-sm">${(p.score || 0).toLocaleString('pt-BR')} pts</span>
+                    </div>
+                `).join('');
+            }
+
+            const nextBtn = document.getElementById('btn-next-question');
+            const waitMsg = document.getElementById('player-wait-next-msg');
+            const isLast = gameState.currentQIndex >= gameState.questions.length - 1;
+
+            if (gameState.mode === 'player') {
+                nextBtn.classList.add('hidden');
+                waitMsg.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                waitMsg.classList.add('hidden');
+                nextBtn.innerHTML = isLast
+                    ? `<span>Ver Pódio Final</span><i class="fa-solid fa-trophy"></i>`
+                    : `<span>Próxima Questão</span><i class="fa-solid fa-arrow-right"></i>`;
+            }
+        }
+
+        function advanceToNextQuestion() {
+            SFX.click();
+            if (gameState.currentQIndex + 1 >= gameState.questions.length) {
+                if (gameState.mode === 'host') {
+                    gameState.currentRoomStatus = 'podium';
+                    broadcastHostState();
+                }
+                showFinalPodium();
+            } else {
+                gameState.currentQIndex++;
+                if (gameState.mode === 'host') {
+                    gameState.currentRoomStatus = 'question';
+                    broadcastHostState();
+                }
+                renderQuestionScreen();
+            }
+        }
+
+        // =========================================================================
+        // 12. PÓDIO FINAL E CLASSIFICAÇÃO GERAL
+        // =========================================================================
+        function showFinalPodium() {
+            clearInterval(gameState.timerInterval);
+            switchView('view-podium');
+            SFX.podium();
+
+            try {
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
+                }
+            } catch (e) {}
+
+            let ranking = [];
+            if (gameState.mode === 'solo') {
+                ranking = [{
+                    id: 'solo',
+                    name: 'Você (Prática)',
+                    avatar: '🩺',
+                    score: gameState.score,
+                    correctCount: gameState.correctCount
+                }];
+            } else {
+                ranking = Object.values(gameState.playersMap)
+                    .sort((a, b) => (b.score || 0) - (a.score || 0));
+            }
+
+            [1, 2, 3].forEach(pos => {
+                const p = ranking[pos - 1];
+                const nameEl = document.getElementById(`podium-name-${pos}`);
+                const scoreEl = document.getElementById(`podium-score-${pos}`);
+                if (p) {
+                    nameEl.textContent = `${p.avatar || '🩺'} ${p.name}`;
+                    scoreEl.textContent = `${(p.score || 0).toLocaleString('pt-BR')} pts`;
+                } else {
+                    nameEl.textContent = "---";
+                    scoreEl.textContent = "0 pts";
+                }
+            });
+
+            const listEl = document.getElementById('final-ranking-list');
+            listEl.innerHTML = ranking.map((p, idx) => `
+                <div class="flex items-center justify-between bg-slate-900/90 px-4 py-3 rounded-xl border ${idx === 0 ? 'border-amber-400/60' : 'border-white/5'}">
+                    <div class="flex items-center gap-3">
+                        <span class="font-display font-extrabold text-base w-7 ${idx === 0 ? 'text-amber-400' : idx === 1 ? 'text-slate-300' : idx === 2 ? 'text-amber-600' : 'text-slate-500'}">
+                            ${idx + 1}º
+                        </span>
+                        <span class="text-xl">${p.avatar || '🩺'}</span>
+                        <div>
+                            <div class="font-bold text-sm text-white">${escapeHTML(p.name)}</div>
+                            <div class="text-xs text-slate-400">${p.correctCount || 0} de ${gameState.questions.length} acertos</div>
+                        </div>
+                    </div>
+                    <span class="font-display font-extrabold text-emerald-400 text-base">
+                        ${(p.score || 0).toLocaleString('pt-BR')} pts
+                    </span>
+                </div>
+            `).join('');
+        }
+
+        // =========================================================================
+        // 13. INICIALIZAÇÃO ÚNICA E LIGAÇÃO GARANTIDA DE TODOS OS EVENTOS
+        // =========================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            renderQuestionsPreview();
+
+            document.getElementById('brand-home-btn')?.addEventListener('click', confirmReturnHome);
+            document.getElementById('btn-sound-toggle')?.addEventListener('click', () => {
+                soundEnabled = !soundEnabled;
+                const icon = document.getElementById('sound-icon');
+                if (icon) {
+                    icon.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark text-rose-400';
+                }
+                showToast(soundEnabled ? "Som ativado" : "Som silenciado", "info");
+            });
+            document.getElementById('btn-download-html')?.addEventListener('click', downloadSelfHTML);
+
+            document.getElementById('modal-cancel-btn')?.addEventListener('click', closeModal);
+            document.getElementById('modal-confirm-btn')?.addEventListener('click', () => {
+                if (modalCallback) modalCallback();
+                closeModal();
+            });
+
+            document.getElementById('btn-create-room')?.addEventListener('click', startAsHost);
+            document.getElementById('btn-join-room')?.addEventListener('click', joinMultiplayerRoom);
+            document.getElementById('btn-solo-mode')?.addEventListener('click', startSoloMode);
+
+            document.getElementById('btn-toggle-preview')?.addEventListener('click', () => {
+                SFX.click();
+                document.getElementById('questions-preview-drawer')?.classList.toggle('hidden');
+            });
+
+            document.getElementById('btn-copy-pin')?.addEventListener('click', copyRoomPin);
+            document.getElementById('btn-cancel-room')?.addEventListener('click', confirmReturnHome);
+            document.getElementById('btn-host-start-game')?.addEventListener('click', hostStartQuiz);
+            document.getElementById('host-time-select')?.addEventListener('change', broadcastHostState);
+            document.getElementById('host-count-select')?.addEventListener('change', broadcastHostState);
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`opt-btn-${i}`)?.addEventListener('click', () => submitAnswer(i));
+            }
+
+            document.getElementById('btn-host-skip-timer')?.addEventListener('click', hostForceReveal);
+            document.getElementById('btn-next-question')?.addEventListener('click', advanceToNextQuestion);
+            document.getElementById('btn-podium-home')?.addEventListener('click', returnHome);
+
+            const params = new URLSearchParams(window.location.search);
+            const urlPin = params.get('pin');
+            if (urlPin) {
+                const pinInput = document.getElementById('input-join-pin');
+                const nameInput = document.getElementById('input-join-name');
+                if (pinInput) pinInput.value = urlPin.trim();
+                if (nameInput) nameInput.focus();
+                showToast(`PIN ${urlPin.trim()} detectado pelo QR Code! Digite seu nome para entrar.`, "info");
+            }
+        });
+    })();
     </script>
 </body>
 </html>
